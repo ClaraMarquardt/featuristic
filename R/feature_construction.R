@@ -30,7 +30,7 @@ feature_construction <- function(control_file_path) {
 	required_helpers <- c(
 	# No helpers required for feature compilation)
 	)
-	load_helpers(required_helpers)
+	# load_helpers(required_helpers)
 		
 	#----------------------------------------------------------------------------#
 	#                		  MODIFY / FORMAT COHORT/VAR LIST                    #
