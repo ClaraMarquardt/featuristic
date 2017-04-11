@@ -1,18 +1,18 @@
- ##########################################
-# DESCRIPTION: This file defines a function which generates diagnosis 
-# features for a given cohort from a raw RPDR .Dia file
-# ##########################################
-# Creator: Clara Marquardt
-# Date: 5th January 
-# ##########################################
-# Language: R
-# ##########################################
-# TO-DO-LIST 
+#----------------------------------------------------------------------------#
 
-
-################################################################################
-########################  CREATE DIAGNOSIS FEATURES ##########################
-################################################################################
+#' @title Generate diagnosis-related features (dia data).
+#'
+#' @description \
+#'
+#' @export
+#' @import data.table
+#' @param dia_file_mod
+#' @param leak_dia_day
+#' @param combine
+#' @param dia_file_mod_ext
+#' @param file_date_var
+#' @return
+#' @examples
 
  dia_feature_gen <- function(dia_file_mod=dia_file_mod, leak_dia_day=leak_dia_day, combine=FALSE, 
   dia_file_mod_ext=NA, file_date_var="dia_date") {
@@ -456,7 +456,5 @@
 }
 
 
-################################################################################
-##################################  END  #######################################
-################################################################################
+#----------------------------------------------------------------------------#
 

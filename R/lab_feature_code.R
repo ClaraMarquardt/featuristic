@@ -1,17 +1,19 @@
-################################################################################
-# DESCRIPTION: This file defines a function which generates lab 
-# features for a given cohort from a raw RPDR .Lab 
-# ##########################################
-# Creator: Clara Marquardt
-# Date: 5th January 
-# ##########################################
-# Language: R
-# ##########################################
-# TO-DO-LIST 
+#----------------------------------------------------------------------------#
 
-################################################################################
-############################  CREATE LAB FEATURES ##############################
-################################################################################
+#' @title Generate lab-related features (lab data).
+#'
+#' @description \
+#'
+#' @export
+#' @import data.table
+#' @param lab_file_mod
+#' @param leak_lab_day
+#' @param combine
+#' @param lab_file_mod_ext
+#' @param file_date_var
+#' @return
+#' @examples
+
 
 lab_feature_gen <- function(lab_file_mod=lab_file_mod, leak_lab_day=leak_lab_day, 
   combine=FALSE,lab_file_mod_ext=NA, file_date_var="lab_date") {
@@ -252,7 +254,5 @@ lab_feature_gen <- function(lab_file_mod=lab_file_mod, leak_lab_day=leak_lab_day
 
 }
 
-################################################################################
-##################################  END #######################################
-################################################################################
+#----------------------------------------------------------------------------#
 

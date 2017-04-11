@@ -13,10 +13,10 @@
 #----------------------------------------------------------------------------#
 
 # parameters
-wd_path         <- commandArgs(trailingOnly = TRUE)[1]
+package_path         <- commandArgs(trailingOnly = TRUE)[1]
 package_name    <- commandArgs(trailingOnly = TRUE)[2]
 
-print(sprintf("wd_path: %s",  wd_path))
+print(sprintf("package_path: %s",  package_path))
 print(sprintf("package_name: %s",  package_name))
 
 # dependencies
@@ -26,7 +26,7 @@ library(data.table)
 library(zoo)
 
 # paths
-setwd(wd_path)
+setwd(package_path)
 
 #----------------------------------------------------------------------------#
 #                                    CODE                                    #
@@ -34,7 +34,6 @@ setwd(wd_path)
 
 # update the documentation
 #-------------------------------------------
-setwd(paste0("./", package_name))
 document()
 
 # uninstall existing versions
@@ -65,11 +64,14 @@ overview <- unique(overview, by=c("id"))
 overview[, c("function_name"):=strsplit(V1, "   ")[[1]][1], by=c("id")]
 overview[, c("function_desc"):=paste0(unlist(strsplit(V1, "   ")[[1]][-1]),collapse=""), 
 		by=c("id")]
+overview[is.na(function_desc) | function_desc=="", function_desc:=gsub("([^ ]*)( )(.*)", 
+	"\\3", function_name), by=c("id")]
+overview[, function_name:=gsub("([^ ]*)( )(.*)", "\\1", function_name), by=c("id")]
 overview[,function_desc:=gsub("^[ ]*", "", function_desc)]
 overview[, c("id", "V1"):=NULL]
 
 ## save
-write.csv(overview, paste0(wd_path, package_name, "/function_overview.csv"), row.names=F)
+write.csv(overview, paste0(package_path,"/function_overview.csv"), row.names=F)
 
 #----------------------------------------------------------------------------#
 #                                    END                                     #

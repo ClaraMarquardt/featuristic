@@ -1,20 +1,19 @@
+#----------------------------------------------------------------------------#
 
-################################################################################
-# DESCRIPTION: This file defines a function which generates medicine 
-# features for a given cohort from a raw RPDR .Med and .Lme file
-# ##########################################
-# Creator: Clara Marquardt
-# Date: 5th January 
-# ##########################################
-# Language: R
-# ##########################################
-# TO-DO-LIST 
-
-
-
-################################################################################
-################################  CREATE MED FEATURES ##########################
-################################################################################
+#' @title Generate medication-related features (med data).
+#'
+#' @description \
+#'
+#' @export
+#' @import data.table
+#' @param med_file_mod
+#' @param leak_med_day
+#' @param combine
+#' @param med_file_mod_ext
+#' @param med_file_mod_ext_ext
+#' @param file_date_var
+#' @return
+#' @examples
 
 med_feature_gen <- function(med_file_mod=med_file_mod, leak_med_day=leak_med_day, 
   combine=FALSE,  med_file_mod_ext=NA, med_file_mod_ext_ext=NA, 
@@ -407,6 +406,4 @@ med_feature_gen <- function(med_file_mod=med_file_mod, leak_med_day=leak_med_day
 
 
 }
-################################################################################
-##################################  END  #######################################
-################################################################################
+#----------------------------------------------------------------------------#

@@ -9,22 +9,30 @@
 
 
 #----------------------------------------------------------------------------#
-#                                    CONTROL                                 #
-#----------------------------------------------------------------------------#
-
-# parameters
-wd_path="/Users/claramarquardt/Google_Drive/Jobs/zolab/Mulab/other_project/method_new_repo/"
-package_name="ehR"
-
-#----------------------------------------------------------------------------#
 #                                    CODE                                    #
 #----------------------------------------------------------------------------#
 
-cd ${wd_path}
 
-R CMD BATCH --no-save "--args ${wd_path} ${package_name}" \
-	code_dev/package_management/package_update.R \
-	code_dev/package_management/package_update.Rout
+# update data
+#----------------------------------------------------------------------------#
+
+# variable_list_default.Rds
+#-------------------------------------
+cd ${package_path}
+
+R CMD BATCH --no-save "--args ${package_path} ${package_name}" \
+	package_management/variable_list_default_update.R \
+	package_management/variable_list_default_update.Rout
+
+
+# update package
+#----------------------------------------------------------------------------#
+
+cd ${package_path}
+
+R CMD BATCH --no-save "--args ${package_path} ${package_name}" \
+	package_management/package_update.R \
+	package_management/package_update.Rout
 
 #----------------------------------------------------------------------------#
 #                                    END                                     #

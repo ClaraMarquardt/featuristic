@@ -1,22 +1,17 @@
-################################################################################
-# DESCRIPTION: This file defines a function which generates ed_cc 
-# features for a given cohort from a raw RPDR ed_order and ed_enc
-# ##########################################
-# Creator: Clara Marquardt
-# Date: 5th January 
-# ##########################################
-# Language: R
-# ##########################################
-# TO-DO-LIST 
+#----------------------------------------------------------------------------#
 
+#' @title Generate ED-related features (ed_admin data).
+#'
+#' @description \
+#'
+#' @export
+#' @import data.table
+#' @param order_file_date_var
+#' @param enc_file_date_var
+#' @return
+#' @examples
 
-
-################################################################################
-############################  CREATE ED_CC FEATURES ############################
-################################################################################
-
-ed_feature_gen <- function(order_file_date_var="order_enter_date",
- enc_file_date_var="adm_date") {
+ed_feature_gen <- function(order_file_date_var="order_enter_date", enc_file_date_var="adm_date") {
 
   ##############################################################################
   ### Load the  modified/pre-processed ed file for the specified data sample -- 
@@ -294,9 +289,7 @@ ed_feature_gen <- function(order_file_date_var="order_enter_date",
 }
 
 
-################################################################################
-##################################  END  #######################################
-################################################################################
+#----------------------------------------------------------------------------#
 
 
 

@@ -1,18 +1,21 @@
- ##########################################
-# DESCRIPTION: This file defines a function which generates vital sign 
-# features for a given cohort from a raw RPDR .Lvs file
-# ##########################################
-# Creator: Clara Marquardt
-# Date: 5th January 
-# ##########################################
-# Language: R
-# ##########################################
-# TO-DO-LIST 
+#----------------------------------------------------------------------------#
 
+#' @title Generate vital sign-related features (lvs data).
+#'
+#' @description \
+#'
+#' @export
+#' @import data.table
+#' @param lvs_file_mod
+#' @param leak_lvs_day
+#' @param combine
+#' @param lvs_file_mod_ext
+#' @param lvs_file_mod_ext_ext
+#' @param load
+#' @param file_date_var
+#' @return
+#' @examples
 
-################################################################################
-########################  CREATE VITAL_SIGN FEATURES ##########################
-################################################################################
 
 lvs_feature_gen <- function(lvs_file_mod=lvs_file_mod, leak_lvs_day=leak_lvs_day, combine=FALSE, 
   lvs_file_mod_ext=NA, lvs_file_mod_ext_ext=NA, load=TRUE, file_date_var="lvs_date") {
@@ -185,6 +188,4 @@ lvs_feature_gen <- function(lvs_file_mod=lvs_file_mod, leak_lvs_day=leak_lvs_day
 }
 
    
-################################################################################
-##################################  END  #######################################
-################################################################################
+#----------------------------------------------------------------------------#

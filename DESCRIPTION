@@ -1,10 +1,40 @@
 Package: FEATure
-Title: What the Package Does (one line, title case)
+Title: Generate ehR features
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: person("Clara", "Marquardt", email = "marquardt.clara@gmail.com", role = c("aut", "cre"))
+Description: \
 Depends: R (>= 3.3.3)
-License: What license is it under?
+License: \
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1.9000
+Imports:
+	data.table, 
+	shape, 
+	diagram, 
+	dplyr, 
+	futile.logger, 
+	ggplot2, 
+    icd, 
+    lubridate, 
+    magrittr, 
+    NCmisc, 
+    parallel, 
+    pbapply, 
+    plyr, 
+    reader, 
+    reshape, 
+    reshape2, 
+    stringr, 
+    taxize, 
+    tidyr, 
+    VennDiagram, 
+    zoo, 
+    riverplot, 
+    RColorBrewer,
+    munsell, 
+    knitr, 
+    rmarkdown, 
+    imputeMissings, 
+    ehR
+Remotes: ClaraMarquardt/ehR
