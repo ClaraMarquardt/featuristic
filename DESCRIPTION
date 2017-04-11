@@ -3,7 +3,7 @@ Title: Generate ehR features
 Version: 0.0.0.9000
 Authors@R: person("Clara", "Marquardt", email = "marquardt.clara@gmail.com", role = c("aut", "cre"))
 Description: \
-Depends: R (>= 3.3.3)
+Depends: R (>= 3.3.1)
 License: \
 Encoding: UTF-8
 LazyData: true
