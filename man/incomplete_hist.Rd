@@ -24,4 +24,3 @@ incomplete_hist(dt, num_factor_var_list, indic_var_list,
 \description{
 \
 }
-

@@ -23,6 +23,7 @@
 "lab_feature_gen","Generate lab-related features (lab data)."
 "lab_oncdrs_feature_gen","Generate DFCI lab-related features (lab_oncdrs data)."
 "lab_oncdrs_rpdr_feature_gen","Generate DFCI & RPDR (combined) lab-related features (lab_oncdrs & lab data)."
+"load_dep","Load dependencies (dev function)."
 "lvs_feature_gen","Generate vital sign-related features (lvs data)."
 "med_chemo_oncdrs_rpdr_feature_gen","Generate DFCI & RPDR (combined) medication and chemotherapy-related features (med_oncdrs & med & chemo_oncdrs data)."
 "med_feature_gen","Generate medication-related features (med data)."

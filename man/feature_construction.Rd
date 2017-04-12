@@ -12,4 +12,3 @@ feature_construction(control_file_path)
 \description{
 \
 }
-

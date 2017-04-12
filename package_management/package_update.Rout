@@ -1,7 +1,7 @@
 
-R version 3.3.1 (2016-06-21) -- "Bug in Your Hair"
-Copyright (C) 2016 The R Foundation for Statistical Computing
-Platform: x86_64-pc-linux-gnu (64-bit)
+R version 3.3.3 (2017-03-06) -- "Another Canoe"
+Copyright (C) 2017 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin16.4.0 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -17,7 +17,6 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
 
-[1] "*** Successfully loaded ~/.Rprofile ***"
 > #----------------------------------------------------------------------------#
 > 
 > # Purpose:     Batch mode script to update package 
@@ -34,10 +33,10 @@ Type 'q()' to quit R.
 > 
 > # parameters
 > package_path         <- commandArgs(trailingOnly = TRUE)[1]
-> package_name    <- commandArgs(trailingOnly = TRUE)[2]
+> package_name         <- commandArgs(trailingOnly = TRUE)[2]
 > 
 > print(sprintf("package_path: %s",  package_path))
-[1] "package_path: /data/zolab/methods_new/base_code/feature_construction_new/FEATure"
+[1] "package_path: /Users/claramarquardt/Google_Drive/Jobs/zolab/mulab/other_project/FEATure"
 > print(sprintf("package_name: %s",  package_name))
 [1] "package_name: FEATure"
 > 
@@ -66,7 +65,136 @@ The following objects are masked from ‘package:base’:
 > document()
 Updating FEATure documentation
 Loading FEATure
-Updating roxygen version in  /data/zolab/methods_new/base_code/feature_construction_new/FEATure/DESCRIPTION 
+Updating roxygen version in /Users/claramarquardt/Google_Drive/Jobs/zolab/mulab/other_project/FEATure/DESCRIPTION
+Warning: @param [chemo_oncdrs_feature_gen.R#10]: requires name and description
+Warning: @param [chemo_oncdrs_feature_gen.R#11]: requires name and description
+Warning: @param [chemo_oncdrs_feature_gen.R#12]: requires a value
+Warning: @return [chemo_oncdrs_feature_gen.R#13]: requires a value
+Warning: @examples [chemo_oncdrs_feature_gen.R#14]: requires a value
+Warning: @param [dem_feature_feature_gen.R#10]: requires name and description
+Warning: @param [dem_feature_feature_gen.R#11]: requires name and description
+Warning: @return [dem_feature_feature_gen.R#12]: requires a value
+Warning: @examples [dem_feature_feature_gen.R#13]: requires a value
+Warning: @param [dia_feature_feature_gen.R#10]: requires name and description
+Warning: @param [dia_feature_feature_gen.R#11]: requires name and description
+Warning: @param [dia_feature_feature_gen.R#12]: requires name and description
+Warning: @param [dia_feature_feature_gen.R#13]: requires name and description
+Warning: @param [dia_feature_feature_gen.R#14]: requires name and description
+Warning: @param [dia_feature_feature_gen.R#15]: requires name and description
+Warning: @param [dia_feature_feature_gen.R#16]: requires name and description
+Warning: @return [dia_feature_feature_gen.R#17]: requires a value
+Warning: @examples [dia_feature_feature_gen.R#18]: requires a value
+Warning: @param [dia_oncdrs_feature_code.R#10]: requires name and description
+Warning: @return [dia_oncdrs_feature_code.R#12]: requires a value
+Warning: @examples [dia_oncdrs_feature_code.R#13]: requires a value
+Warning: @param [dia_oncdrs_rpdr_feature_gen.R#10]: requires name and description
+Warning: @return [dia_oncdrs_rpdr_feature_gen.R#12]: requires a value
+Warning: @examples [dia_oncdrs_rpdr_feature_gen.R#13]: requires a value
+Warning: @param [ed_feature_gen.R#10]: requires name and description
+Warning: @param [ed_feature_gen.R#11]: requires name and description
+Warning: @param [ed_feature_gen.R#12]: requires name and description
+Warning: @param [ed_feature_gen.R#13]: requires name and description
+Warning: @return [ed_feature_gen.R#14]: requires a value
+Warning: @examples [ed_feature_gen.R#15]: requires a value
+Warning: @param [enc_feature_gen.R#10]: requires name and description
+Warning: @param [enc_feature_gen.R#11]: requires name and description
+Warning: @param [enc_feature_gen.R#12]: requires name and description
+Warning: @return [enc_feature_gen.R#13]: requires a value
+Warning: @examples [enc_feature_gen.R#14]: requires a value
+Warning: @param [enc_oncdrs_feature_gen.R#10]: requires name and description
+Warning: @param [enc_oncdrs_feature_gen.R#11]: requires name and description
+Warning: @return [enc_oncdrs_feature_gen.R#12]: requires a value
+Warning: @examples [enc_oncdrs_feature_gen.R#13]: requires a value
+Warning: @param [enc_oncdrs_rpdr_feature_gen.R#10]: requires name and description
+Warning: @param [enc_oncdrs_rpdr_feature_gen.R#11]: requires name and description
+Warning: @return [enc_oncdrs_rpdr_feature_gen.R#12]: requires a value
+Warning: @examples [enc_oncdrs_rpdr_feature_gen.R#13]: requires a value
+Warning: @return [feature_check.R#15]: requires a value
+Warning: @examples [feature_check.R#16]: requires a value
+Warning: @return [feature_coll.R#13]: requires a value
+Warning: @examples [feature_coll.R#14]: requires a value
+Warning: @return [feature_compilation.R#11]: requires a value
+Warning: @examples [feature_compilation.R#12]: requires a value
+Warning: @return [feature_construction.R#11]: requires a value
+Warning: @examples [feature_construction.R#12]: requires a value
+Warning: @return [feature_initialisation.R#10]: requires a value
+Warning: @examples [feature_initialisation.R#11]: requires a value
+Warning: @return [feature_structure_vis.R#11]: requires a value
+Warning: @examples [feature_structure_vis.R#12]: requires a value
+Warning: @param [feature_var_format.R#11]: requires name and description
+Warning: @param [feature_var_format.R#12]: requires name and description
+Warning: @return [feature_var_format.R#13]: requires a value
+Warning: @examples [feature_var_format.R#14]: requires a value
+Warning: @return [feature_var_format_2.R#12]: requires a value
+Warning: @examples [feature_var_format_2.R#13]: requires a value
+Warning: @return [incomplete_hist.R#16]: requires a value
+Warning: @examples [incomplete_hist.R#17]: requires a value
+Warning: @param [indiv_feature_gen.R#10]: requires name and description
+Warning: @return [indiv_feature_gen.R#11]: requires a value
+Warning: @examples [indiv_feature_gen.R#12]: requires a value
+Warning: @param [lab_feature_gen.R#10]: requires name and description
+Warning: @param [lab_feature_gen.R#11]: requires name and description
+Warning: @param [lab_feature_gen.R#12]: requires name and description
+Warning: @param [lab_feature_gen.R#13]: requires name and description
+Warning: @param [lab_feature_gen.R#14]: requires name and description
+Warning: @param [lab_feature_gen.R#15]: requires name and description
+Warning: @param [lab_feature_gen.R#16]: requires name and description
+Warning: @return [lab_feature_gen.R#17]: requires a value
+Warning: @examples [lab_feature_gen.R#18]: requires a value
+Warning: @param [lab_oncdrs_feature_gen.R#10]: requires name and description
+Warning: @param [lab_oncdrs_feature_gen.R#11]: requires name and description
+Warning: @return [lab_oncdrs_feature_gen.R#12]: requires a value
+Warning: @examples [lab_oncdrs_feature_gen.R#13]: requires a value
+Warning: @param [lab_oncdrs_rpdr_feature_gen.R#10]: requires name and description
+Warning: @param [lab_oncdrs_rpdr_feature_gen.R#11]: requires name and description
+Warning: @return [lab_oncdrs_rpdr_feature_gen.R#12]: requires a value
+Warning: @examples [lab_oncdrs_rpdr_feature_gen.R#13]: requires a value
+Warning: @return [load_dep.R#9]: requires a value
+Warning: @examples [load_dep.R#10]: requires a value
+Warning: @param [lvs_feature_gen.R#10]: requires name and description
+Warning: @param [lvs_feature_gen.R#11]: requires name and description
+Warning: @param [lvs_feature_gen.R#12]: requires name and description
+Warning: @param [lvs_feature_gen.R#13]: requires name and description
+Warning: @param [lvs_feature_gen.R#14]: requires name and description
+Warning: @param [lvs_feature_gen.R#15]: requires name and description
+Warning: @param [lvs_feature_gen.R#16]: requires name and description
+Warning: @param [lvs_feature_gen.R#17]: requires name and description
+Warning: @param [lvs_feature_gen.R#18]: requires name and description
+Warning: @return [lvs_feature_gen.R#19]: requires a value
+Warning: @examples [lvs_feature_gen.R#20]: requires a value
+Warning: @param [med_chemo_oncdrs_rpdr_feature_gen.R#11]: requires name and description
+Warning: @param [med_chemo_oncdrs_rpdr_feature_gen.R#12]: requires name and description
+Warning: @return [med_chemo_oncdrs_rpdr_feature_gen.R#13]: requires a value
+Warning: @examples [med_chemo_oncdrs_rpdr_feature_gen.R#14]: requires a value
+Warning: @param [med_feature_gen.R#10]: requires name and description
+Warning: @param [med_feature_gen.R#11]: requires name and description
+Warning: @param [med_feature_gen.R#12]: requires name and description
+Warning: @param [med_feature_gen.R#13]: requires name and description
+Warning: @param [med_feature_gen.R#14]: requires name and description
+Warning: @param [med_feature_gen.R#15]: requires name and description
+Warning: @param [med_feature_gen.R#16]: requires name and description
+Warning: @param [med_feature_gen.R#17]: requires name and description
+Warning: @return [med_feature_gen.R#18]: requires a value
+Warning: @examples [med_feature_gen.R#19]: requires a value
+Warning: @param [med_oncdrs_feature_gen.R#10]: requires name and description
+Warning: @param [med_oncdrs_feature_gen.R#11]: requires name and description
+Warning: @return [med_oncdrs_feature_gen.R#12]: requires a value
+Warning: @examples [med_oncdrs_feature_gen.R#13]: requires a value
+Warning: @param [mic_feature_gen.R#10]: requires name and description
+Warning: @param [mic_feature_gen.R#11]: requires name and description
+Warning: @param [mic_feature_gen.R#12]: requires name and description
+Warning: @return [mic_feature_gen.R#13]: requires a value
+Warning: @examples [mic_feature_gen.R#14]: requires a value
+Warning: @return [obs_check.R#13]: requires a value
+Warning: @examples [obs_check.R#14]: requires a value
+Warning: @param [prc_feature_gen.R#11]: requires name and description
+Warning: @param [prc_feature_gen.R#12]: requires name and description
+Warning: @return [prc_feature_gen.R#13]: requires a value
+Warning: @examples [prc_feature_gen.R#14]: requires a value
+Warning: @return [timeframe_combine.R#11]: requires a value
+Warning: @examples [timeframe_combine.R#12]: requires a value
+Warning: @return [timeframe_split.R#12]: requires a value
+Warning: @examples [timeframe_split.R#13]: requires a value
 Writing NAMESPACE
 Writing chemo_oncdrs_feature_gen.Rd
 Writing dem_feature_gen.Rd
@@ -92,6 +220,7 @@ Writing indiv_feature_gen.Rd
 Writing lab_feature_gen.Rd
 Writing lab_oncdrs_feature_gen.Rd
 Writing lab_oncdrs_rpdr_feature_gen.Rd
+Writing load_dep.Rd
 Writing lvs_feature_gen.Rd
 Writing med_chemo_oncdrs_rpdr_feature_gen.Rd
 Writing med_feature_gen.Rd
@@ -103,7 +232,7 @@ Writing timeframe_combine.Rd
 Writing timeframe_split.Rd
 Writing variable_list_default.Rd
 Writing zip_class.Rd
-There were 50 or more warnings (use warnings() to see the first 50)
+There were 11 warnings (use warnings() to see them)
 > 
 > # uninstall existing versions
 > #-------------------------------------------
@@ -111,7 +240,7 @@ There were 50 or more warnings (use warnings() to see the first 50)
 > detach(package_spec, unload=TRUE,character.only = TRUE)
 > 
 > try(remove.packages(package_name))
-Removing package from ‘/PHShome/cz425/R_libs’
+Removing package from ‘/usr/local/lib/R/3.3/site-library’
 (as ‘lib’ is unspecified)
 > 
 > # fresh install
@@ -119,72 +248,50 @@ Removing package from ‘/PHShome/cz425/R_libs’
 > setwd("..")
 > install(package_name, dependencies = TRUE)
 Installing FEATure
-Downloading GitHub repo hadley/ggplot2@master
-from URL https://api.github.com/repos/hadley/ggplot2/zipball/master
-Installing ggplot2
-'/PHShome/cz425/anaconda2/lib/R/bin/R' --no-site-file --no-environ --no-save  \
-  --no-restore --quiet CMD INSTALL  \
-  '/tmp/RtmpZsLBzZ/devtoolsc20039b38e38/tidyverse-ggplot2-f4398b6'  \
-  --library='/PHShome/cz425/R_libs' --install-tests 
-
-* installing *source* package ‘ggplot2’ ...
-** R
-** data
-*** moving datasets to lazyload DB
-** inst
-** tests
-** preparing package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** installing vignettes
-** testing if installed package can be loaded
-* DONE (ggplot2)
 Downloading GitHub repo ClaraMarquardt/ehR@master
 from URL https://api.github.com/repos/ClaraMarquardt/ehR/zipball/master
 Installing ehR
-Downloading GitHub repo hadley/ggplot2@master
-from URL https://api.github.com/repos/hadley/ggplot2/zipball/master
-Skipping ggplot2, it is already being installed.
-Downloading GitHub repo trinker/plotflow@master
-from URL https://api.github.com/repos/trinker/plotflow/zipball/master
-Installing plotflow
-Downloading GitHub repo hadley/ggplot2@master
-from URL https://api.github.com/repos/hadley/ggplot2/zipball/master
-Skipping ggplot2, it is already being installed.
-'/PHShome/cz425/anaconda2/lib/R/bin/R' --no-site-file --no-environ --no-save  \
-  --no-restore --quiet CMD INSTALL  \
-  '/tmp/RtmpZsLBzZ/devtoolsc200759a492e/trinker-plotflow-30dff9f'  \
-  --library='/PHShome/cz425/R_libs' --install-tests 
-
-* installing *source* package ‘plotflow’ ...
-** R
-** inst
-** preparing package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** testing if installed package can be loaded
-* DONE (plotflow)
-'/PHShome/cz425/anaconda2/lib/R/bin/R' --no-site-file --no-environ --no-save  \
-  --no-restore --quiet CMD INSTALL  \
-  '/tmp/RtmpZsLBzZ/devtoolsc2004287e1a7/ClaraMarquardt-ehR-0afb02d'  \
-  --library='/PHShome/cz425/R_libs' --install-tests 
+'/usr/local/Cellar/r/3.3.3_1/R.framework/Resources/bin/R' --no-site-file  \
+  --no-environ --no-save --no-restore --quiet CMD INSTALL  \
+  '/private/var/folders/m7/y5gfhjhj64vc_n9dtq23w81w0000gn/T/Rtmpe5g8my/devtools74301c6da5d5/ClaraMarquardt-ehR-86f98e1'  \
+  --library='/usr/local/lib/R/3.3/site-library' --install-tests 
 
 * installing *source* package ‘ehR’ ...
 ** R
 ** data
 *** moving datasets to lazyload DB
 ** preparing package for lazy loading
+Warning: replacing previous import ‘data.table::month’ by ‘lubridate::month’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::hour’ by ‘lubridate::hour’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::quarter’ by ‘lubridate::quarter’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::week’ by ‘lubridate::week’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::year’ by ‘lubridate::year’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::wday’ by ‘lubridate::wday’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::second’ by ‘lubridate::second’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::minute’ by ‘lubridate::minute’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::mday’ by ‘lubridate::mday’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::yday’ by ‘lubridate::yday’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::isoweek’ by ‘lubridate::isoweek’ when loading ‘ehR’
 ** help
 *** installing help indices
 ** building package indices
 ** testing if installed package can be loaded
+Warning: replacing previous import ‘data.table::month’ by ‘lubridate::month’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::hour’ by ‘lubridate::hour’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::quarter’ by ‘lubridate::quarter’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::week’ by ‘lubridate::week’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::year’ by ‘lubridate::year’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::wday’ by ‘lubridate::wday’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::second’ by ‘lubridate::second’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::minute’ by ‘lubridate::minute’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::mday’ by ‘lubridate::mday’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::yday’ by ‘lubridate::yday’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::isoweek’ by ‘lubridate::isoweek’ when loading ‘ehR’
 * DONE (ehR)
-'/PHShome/cz425/anaconda2/lib/R/bin/R' --no-site-file --no-environ --no-save  \
-  --no-restore --quiet CMD INSTALL  \
-  '/data/zolab/methods_new/base_code/feature_construction_new/FEATure'  \
-  --library='/PHShome/cz425/R_libs' --install-tests 
+'/usr/local/Cellar/r/3.3.3_1/R.framework/Resources/bin/R' --no-site-file  \
+  --no-environ --no-save --no-restore --quiet CMD INSTALL  \
+  '/Users/claramarquardt/Google_Drive/Jobs/zolab/mulab/other_project/FEATure'  \
+  --library='/usr/local/lib/R/3.3/site-library' --install-tests 
 
 * installing *source* package ‘FEATure’ ...
 ** R
@@ -196,6 +303,36 @@ Skipping ggplot2, it is already being installed.
 ** building package indices
 ** testing if installed package can be loaded
 * DONE (FEATure)
-Error in loadNamespace(name) : there is no package called ‘git2r’
-Calls: install ... tryCatch -> tryCatchList -> tryCatchOne -> <Anonymous>
-Execution halted
+> library(package_name,character.only = TRUE)
+> 
+> # generate overview of package
+> #-------------------------------------------
+> overview <- as.data.table(library(help=package_name, 
++ 				character.only = TRUE)$info[[2]])
+> 
+> ## format
+> overview[V1 %like% "\\.$", id:=1:nrow(overview[V1 %like% "\\.$"])]
+> overview[, id:=na.locf(id, fromLast=TRUE)]
+> overview[, V1:=gsub("^[ ]*", "", V1)]
+> overview[, V1:=paste0(V1, collapse=" "), by=c("id")]
+> overview <- unique(overview, by=c("id"))
+> 
+> overview[, c("function_name"):=strsplit(V1, "   ")[[1]][1], by=c("id")]
+> overview[, c("function_desc"):=paste0(unlist(strsplit(V1, "   ")[[1]][-1]),collapse=""), 
++ 		by=c("id")]
+> overview[is.na(function_desc) | function_desc=="", function_desc:=gsub("([^ ]*)( )(.*)", 
++ 	"\\3", function_name), by=c("id")]
+> overview[, function_name:=gsub("([^ ]*)( )(.*)", "\\1", function_name), by=c("id")]
+> overview[,function_desc:=gsub("^[ ]*", "", function_desc)]
+> overview[, c("id", "V1"):=NULL]
+> 
+> ## save
+> write.csv(overview, paste0(package_path,"/function_overview.csv"), row.names=F)
+> 
+> #----------------------------------------------------------------------------#
+> #                                    END                                     #
+> #----------------------------------------------------------------------------#
+> 
+> proc.time()
+   user  system elapsed 
+ 17.184   1.521  25.356 
