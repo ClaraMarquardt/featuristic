@@ -10,7 +10,7 @@ library(FEATure)
 **Documentation**
 - See function_overview.csv for an overview of all the functions (and data sets) included in the package 
 - Usage: 
-''''
+````
 1. Generate a local copy of the control.R template located at FEATure/template/control.R. 
 2. Modify the settings contained in the control.R file (comments provided)
 3. *Construct features - Stage I*
