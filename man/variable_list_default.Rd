@@ -12,4 +12,3 @@ data(variable_list_default)
 \
 }
 \keyword{datasets}
-

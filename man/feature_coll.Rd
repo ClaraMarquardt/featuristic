@@ -17,4 +17,3 @@ feature_coll(dt, cohort_key_var_list = cohort_key_var,
 \description{
 \
 }
-
