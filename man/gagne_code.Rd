@@ -15,3 +15,4 @@ data(gagne_code)
 Weights used to derive Gagne Comborbidity Scores.
 }
 \keyword{datasets}
+

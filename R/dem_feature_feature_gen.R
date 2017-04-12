@@ -6,21 +6,20 @@
 #'
 #' @export
 #' @import data.table
-#' @param 
+#' @param cohort
+#' @param cohort_key_var_merge
 #' @return
 #' @examples
 
-dem_feature_gen <- function() {
+dem_feature_gen <- function(cohort, cohort_key_var_merge, cohort_key_var) {
+
+  print("launching dem_feature_gen")
  
   ##############################################################################
   ### load the raw file & load requisite helpers
 
   ## helpers
-  required_helpers <- c(
-     "zip_class",
-     "flu_data_cdc"
-  )
-  # load_helpers(required_helpers)
+  # required_helpers: "zip_class","flu_data_cdc"
 
   ## raw file
   dem <- readRDS_merge(dem_file_mod)

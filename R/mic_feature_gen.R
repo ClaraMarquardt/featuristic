@@ -7,10 +7,14 @@
 #' @export
 #' @import data.table
 #' @param file_date_var
+#' @param cohort
+#' @param cohort_key_var_merge
 #' @return
 #' @examples
 
-mic_feature_gen <- function(file_date_var="mic_date") {
+mic_feature_gen <- function(cohort, cohort_key_var_merge, cohort_key_var, file_date_var="mic_date") {
+  
+  print("launching mic_feature_gen")
   
   ##############################################################################
   ### Load the  modified/pre-processed mic file for the specified data sample -- 

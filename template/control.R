@@ -364,7 +364,6 @@ miss_hist <- FALSE       # generate missingness histograms ?
 # production vs. testing (DEFAULT)
 #----------------------------------------------------------------------------#
 test_raw_file <- FALSE  # use subset of data files ?
-test_cohort   <- FALSE  # use subset of cohort ?
 test_row 	  <- 20000  # rows in subsets of cohort/data files 
 
 

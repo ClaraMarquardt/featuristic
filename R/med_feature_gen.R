@@ -6,8 +6,10 @@
 #'
 #' @export
 #' @import data.table
-#' @param med_file_mod
-#' @param leak_med_day
+#' @param cohort
+#' @param cohort_key_var_merge
+#' @param med_file_mod_arg
+#' @param leak_med_day_arg
 #' @param combine
 #' @param med_file_mod_ext
 #' @param med_file_mod_ext_ext
@@ -15,10 +17,12 @@
 #' @return
 #' @examples
 
-med_feature_gen <- function(med_file_mod=med_file_mod, leak_med_day=leak_med_day, 
-  combine=FALSE,  med_file_mod_ext=NA, med_file_mod_ext_ext=NA, 
-  file_date_var="med_date") {
+med_feature_gen <- function(cohort, cohort_key_var_merge, cohort_key_var, med_file_mod_arg=med_file_mod, 
+  leak_med_day_arg=leak_med_day, 
+  combine=FALSE,  med_file_mod_ext=NA, med_file_mod_ext_ext=NA, file_date_var="med_date") {
 
+  print("launching med_feature_gen")
+  
 
   ##############################################################################
   ### Load the  modified/pre-processed med file for the specified data sample -- 
@@ -26,7 +30,7 @@ med_feature_gen <- function(med_file_mod=med_file_mod, leak_med_day=leak_med_day
   ### batchmode job using machine/function_class_batchmode.txt)
     
   # (a) load the stored code - return error message if file does not exist
-  tryCatch(med <- readRDS_merge(med_file_mod), warning=function(w)
+  tryCatch(med <- readRDS_merge(med_file_mod_arg), warning=function(w)
     print("no classified med file available for the data sample"))
     # XXX NOTE: RDS file preserves formatting of empi as character
   
@@ -90,8 +94,8 @@ med_feature_gen <- function(med_file_mod=med_file_mod, leak_med_day=leak_med_day
 
   ### implement leakage control (as specified in control file - 
   ### omit day of outcome/days pre outcome)
-  if (!is.na(leak_med_day)) {
-    med <- med[!(pred_date-med_date_1<=leak_med_day)]
+  if (!is.na(leak_med_day_arg)) {
+    med <- med[!(pred_date-med_date_1<=leak_med_day_arg)]
   }
 
 
@@ -368,7 +372,7 @@ med_feature_gen <- function(med_file_mod=med_file_mod, leak_med_day=leak_med_day
 
   timeframe_combine(med_feature_list)
 
-  lapply(med_feature_list, function(x) get(x)[,outcome_id:=as.character(outcome_id)])
+  # lapply(med_feature_list, function(x) get(x)[,outcome_id:=as.character(outcome_id)])
   med <- Reduce(mymerge, mget(unlist(med_feature_list)))
 
 

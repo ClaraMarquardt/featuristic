@@ -6,8 +6,10 @@
 #'
 #' @export
 #' @import data.table
-#' @param lab_file_mod
-#' @param leak_lab_day
+#' @param cohort
+#' @param cohort_key_var_merge
+#' @param lab_file_mod_arg
+#' @param leak_lab_day_arg
 #' @param combine
 #' @param lab_file_mod_ext
 #' @param file_date_var
@@ -15,17 +17,18 @@
 #' @examples
 
 
-lab_feature_gen <- function(lab_file_mod=lab_file_mod, leak_lab_day=leak_lab_day, 
-  combine=FALSE,lab_file_mod_ext=NA, file_date_var="lab_date") {
+lab_feature_gen <- function(cohort, cohort_key_var_merge, cohort_key_var, lab_file_mod_arg=lab_file_mod, 
+  leak_lab_day_arg=leak_lab_day, combine=FALSE,lab_file_mod_ext=NA, file_date_var="lab_date") {
 
-
+  print("launching lab_feature_gen")
+  
   ##############################################################################
   ### Load the  modified/pre-processed lab file for the specified data sample -- 
   ### if no such file exists - excute the function_lab_class.R code (access/submit as 
   ### batchmode job using machine/function_class_batchmode.txt)
     
   # (a) load the stored code - return error message if file does not exist
-  tryCatch(lab <- readRDS_merge(lab_file_mod), warning=function(w)
+  tryCatch(lab <- readRDS_merge(lab_file_mod_arg), warning=function(w)
     print("no classified lab file available for the data sample"))
     # XXX NOTE: RDS file preserves formatting of empi as character
 
@@ -69,8 +72,8 @@ lab_feature_gen <- function(lab_file_mod=lab_file_mod, leak_lab_day=leak_lab_day
 
   ### implement leakage control (as specified in control file - 
   ### omit day of outcome/days pre outcome)
-  if (!is.na(leak_lab_day)) {
-    lab <- lab[!(pred_date-lab_date_1<=leak_lab_day)]
+  if (!is.na(leak_lab_day_arg)) {
+    lab <- lab[!(pred_date-lab_date_1<=leak_lab_day_arg)]
   }
 
   ##############################################################################

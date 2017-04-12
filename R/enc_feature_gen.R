@@ -7,11 +7,15 @@
 #' @export
 #' @import data.table
 #' @param file_date_var
+#' @param cohort
+#' @param cohort_key_var_merge
 #' @return
 #' @examples
 
-enc_feature_gen <- function(file_date_var="adm_date") {
-
+enc_feature_gen <- function(cohort, cohort_key_var_merge, cohort_key_var, file_date_var="adm_date") {
+  
+  print("launching enc_feature_gen")
+  
   ##############################################################################
   ### Load the  modified/pre-processed enc file for the specified data sample -- 
   ### if no such file exists - excute the function_enc_class.R code (access/submit as 

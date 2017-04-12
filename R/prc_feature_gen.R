@@ -7,12 +7,16 @@
 #' @export
 #' @import data.table
 #' @param file_date_var 
+#' @param cohort
+#' @param cohort_key_var_merge
 #' @return
 #' @examples
 
 
-prc_feature_gen <- function(file_date_var="prc_date") {
-
+prc_feature_gen <- function(cohort, cohort_key_var_merge, cohort_key_var, file_date_var="prc_date") {
+  
+  print("launching prc_feature_gen")
+  
   ##############################################################################
   ### Load the  modified/pre-processed prc file for the specified data sample -- 
   ### if no such file exists - excute the function_prc_class.R code (access/submit as 
@@ -120,7 +124,7 @@ prc_feature_gen <- function(file_date_var="prc_date") {
   timeframe_combine(prc_feature_list)
 
   prc <- Reduce(mymerge, mget(unlist(prc_feature_list)))
-
+  
   ##############################################################################
   ### merge with cohort file - empty records -> 0
   prc <- prc[cohort, mget(names(prc)), on=c("outcome_id", "empi", "pred_date")]

@@ -4,9 +4,8 @@
 \alias{feature_check}
 \title{Verify the correct compilation of a feature set.}
 \usage{
-feature_check(feature_dt_name, cohort_dt = cohort,
-  cohort_key_var_list = cohort_key_var,
-  extra_var_list = names(cohort_extra_col), save_name = TRUE)
+feature_check(feature_dt, feature_dt_name, cohort_dt, cohort_key_var_list,
+  extra_var_list, save_name = TRUE)
 }
 \arguments{
 \item{feature_dt_name}{}
@@ -22,3 +21,4 @@ feature_check(feature_dt_name, cohort_dt = cohort,
 \description{
 \
 }
+

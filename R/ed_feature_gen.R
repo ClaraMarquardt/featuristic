@@ -8,11 +8,16 @@
 #' @import data.table
 #' @param order_file_date_var
 #' @param enc_file_date_var
+#' @param cohort
+#' @param cohort_key_var_merge
 #' @return
 #' @examples
 
-ed_feature_gen <- function(order_file_date_var="order_enter_date", enc_file_date_var="adm_date") {
-
+ed_feature_gen <- function(cohort, cohort_key_var_merge, cohort_key_var, 
+  order_file_date_var="order_enter_date", enc_file_date_var="adm_date") {
+  
+  print("launching ed_feature_gen")
+  
   ##############################################################################
   ### Load the  modified/pre-processed ed file for the specified data sample -- 
   ### if no such file exists - excute the function_ed_class.R code (access/submit as 

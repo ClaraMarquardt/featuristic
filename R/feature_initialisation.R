@@ -1,32 +1,16 @@
 #----------------------------------------------------------------------------#
 
-#' @title Generate features (Stage I).
+#' @title Initialise feature construction machinery. 
 #'
 #' @description \
 #'
 #' @export
 #' @import data.table
-#' @param control_file_path Path to control file (see template incl. in package)
 #' @return
 #' @examples
 
-feature_construction <- function(control_file_path) {
+feature_initialisation <- function() {	
 
-	# set-up
-	#-------------------------------------------------#
-	current_date <- as.character(format(Sys.time(), "%d_%m_%Y")) 
-	
-	print(control_file_path)
-	source(control_file_path) # sourced globally
-	
-	# initialise
-	#-------------------------------------------------#	
-	feature_initialisation()
-
-	#----------------------------------------------------------------------------#
-	#                		  MODIFY / FORMAT COHORT/VAR LIST                    #
-	#----------------------------------------------------------------------------#
-	
 	cohort <- readRDS(cohort_file)
 	
 	print(nrow(cohort))
@@ -59,7 +43,7 @@ feature_construction <- function(control_file_path) {
 	
 	print(sprintf("number of observations in cohort: %d", nrow(cohort)))
 	
-	cohort_key_var <<- c("outcome_id", "pred_date", "empi")
+	cohort_key_var <- c("outcome_id", "pred_date", "empi")
 	
 	# store 'extra' cohort variables for later merging with final prediction set
 	# ----------------------------------------------- #
@@ -84,14 +68,9 @@ feature_construction <- function(control_file_path) {
 	setkeyv(cohort, c("empi", paste0("pred_date_beg", name_ext[length(name_ext)]), 
 		"pred_date"))
 	
-	cohort_key_var_merge <<- c("empi", "outcome_id", "pred_date", 
+	cohort_key_var_merge <- c("empi", "outcome_id", "pred_date", 
 		grep("pred_date_", names(cohort), value=T))
-	
-	if (test_cohort==TRUE) {
-		assign("cohort_copy", copy(cohort), envir = .GlobalEnv)
-		assign("cohort", cohort[1:test_row], envir = .GlobalEnv)
-	}
-	
+		
 	# load the variable list  & check version
 	# ----------------------------------------------- #
 	# variable_list <- fread(variable_list_file)
@@ -103,28 +82,17 @@ feature_construction <- function(control_file_path) {
 		setnames(variable_list, variable_list_file_selection, "include")
 	}
 
-	#----------------------------------------------------------------------------#
-	#                		       FEATURE GENERATION                            #
-	#----------------------------------------------------------------------------#
-		
-	inv_lapply(assemble_list, function(feature_set) {
+	# return (or assign globally)
+	# ----------------------------------------------- #
 
-
-		# source feature generation
-		temp_feature <- indiv_feature_gen(feature_set, cohort=cohort, 
-			cohort_key_var_merge=cohort_key_var_merge, cohort_key_var=cohort_key_var)
+	# return(list(cohort=cohort, cohort_key_var=cohort_key_var, cohort_key_var_merge=cohort_key_var_merge, 
+	# cohort_extra_col=cohort_extra_col, variable_list=variable_list))
 	
-		feature_check(temp_feature, paste0(feature_set, "_feature"), cohort_dt=cohort,
-			cohort_key_var_list=cohort_key_var, extra_var_list=names(cohort_extra_col))
-
-		#  save 
-		saveRDS(temp_feature, paste0(modified_folder, paste0(feature_set, "_feature_"), 
-			cohort_name, ".Rds"))
-	
-		rm("temp_feature")
-
-	})	
-
-}	
+	cohort <<- cohort
+	cohort_key_var_merge <<- cohort_key_var_merge
+	cohort_key_var <<- cohort_key_var
+	cohort_extra_col <<- cohort_extra_col
+	variable_list <<- variable_list
+}
 
 #----------------------------------------------------------------------------#

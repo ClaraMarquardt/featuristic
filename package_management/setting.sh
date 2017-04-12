@@ -19,11 +19,15 @@
 # CM settings 
 #--------------------------------------------
 
-## key settings
+## key settings - local
 wd_path=""
 package_path="/Users/claramarquardt/Google_Drive/Jobs/zolab/mulab/other_project/FEATure"
 package_name="FEATure"
 
+## key settings - rgs
+wd_path=""
+package_path="/data/zolab/methods_new/base_code/feature_construction_new/FEATure"
+package_name="FEATure"
 
 #----------------------------------------------------------------------------#
 #                                    End                                     #

@@ -1,0 +1,201 @@
+
+R version 3.3.1 (2016-06-21) -- "Bug in Your Hair"
+Copyright (C) 2016 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[1] "*** Successfully loaded ~/.Rprofile ***"
+> #----------------------------------------------------------------------------#
+> 
+> # Purpose:     Batch mode script to update package 
+> # Author:      Clara Marquardt
+> # Date:        2017
+> 
+> 
+> #----------------------------------------------------------------------------#
+> 
+> 
+> #----------------------------------------------------------------------------#
+> #                                    CONTROL                                 #
+> #----------------------------------------------------------------------------#
+> 
+> # parameters
+> package_path         <- commandArgs(trailingOnly = TRUE)[1]
+> package_name    <- commandArgs(trailingOnly = TRUE)[2]
+> 
+> print(sprintf("package_path: %s",  package_path))
+[1] "package_path: /data/zolab/methods_new/base_code/feature_construction_new/FEATure"
+> print(sprintf("package_name: %s",  package_name))
+[1] "package_name: FEATure"
+> 
+> # dependencies
+> library("devtools")
+> library(roxygen2)
+> library(data.table)
+> library(zoo)
+
+Attaching package: ‘zoo’
+
+The following objects are masked from ‘package:base’:
+
+    as.Date, as.Date.numeric
+
+> 
+> # paths
+> setwd(package_path)
+> 
+> #----------------------------------------------------------------------------#
+> #                                    CODE                                    #
+> #----------------------------------------------------------------------------#
+> 
+> # update the documentation
+> #-------------------------------------------
+> document()
+Updating FEATure documentation
+Loading FEATure
+Updating roxygen version in  /data/zolab/methods_new/base_code/feature_construction_new/FEATure/DESCRIPTION 
+Writing NAMESPACE
+Writing chemo_oncdrs_feature_gen.Rd
+Writing dem_feature_gen.Rd
+Writing dia_feature_gen.Rd
+Writing dia_oncdrs_feature_gen.Rd
+Writing dia_oncdrs_rpdr_feature_gen.Rd
+Writing ed_feature_gen.Rd
+Writing enc_feature_gen.Rd
+Writing enc_oncdrs_feature_gen.Rd
+Writing enc_oncdrs_rpdr_feature_gen.Rd
+Writing feature_check.Rd
+Writing feature_coll.Rd
+Writing feature_compilation.Rd
+Writing feature_construction.Rd
+Writing feature_initialisation.Rd
+Writing feature_structure_vis.Rd
+Writing feature_var_format.Rd
+Writing feature_var_format_2.Rd
+Writing flu_data_cdc.Rd
+Writing gagne_code.Rd
+Writing incomplete_hist.Rd
+Writing indiv_feature_gen.Rd
+Writing lab_feature_gen.Rd
+Writing lab_oncdrs_feature_gen.Rd
+Writing lab_oncdrs_rpdr_feature_gen.Rd
+Writing lvs_feature_gen.Rd
+Writing med_chemo_oncdrs_rpdr_feature_gen.Rd
+Writing med_feature_gen.Rd
+Writing med_oncdrs_feature_gen.Rd
+Writing mic_feature_gen.Rd
+Writing obs_check.Rd
+Writing prc_feature_gen.Rd
+Writing timeframe_combine.Rd
+Writing timeframe_split.Rd
+Writing variable_list_default.Rd
+Writing zip_class.Rd
+There were 50 or more warnings (use warnings() to see the first 50)
+> 
+> # uninstall existing versions
+> #-------------------------------------------
+> package_spec <- paste0("package:", package_name)
+> detach(package_spec, unload=TRUE,character.only = TRUE)
+> 
+> try(remove.packages(package_name))
+Removing package from ‘/PHShome/cz425/R_libs’
+(as ‘lib’ is unspecified)
+> 
+> # fresh install
+> #-------------------------------------------
+> setwd("..")
+> install(package_name, dependencies = TRUE)
+Installing FEATure
+Downloading GitHub repo hadley/ggplot2@master
+from URL https://api.github.com/repos/hadley/ggplot2/zipball/master
+Installing ggplot2
+'/PHShome/cz425/anaconda2/lib/R/bin/R' --no-site-file --no-environ --no-save  \
+  --no-restore --quiet CMD INSTALL  \
+  '/tmp/RtmpZsLBzZ/devtoolsc20039b38e38/tidyverse-ggplot2-f4398b6'  \
+  --library='/PHShome/cz425/R_libs' --install-tests 
+
+* installing *source* package ‘ggplot2’ ...
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** tests
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded
+* DONE (ggplot2)
+Downloading GitHub repo ClaraMarquardt/ehR@master
+from URL https://api.github.com/repos/ClaraMarquardt/ehR/zipball/master
+Installing ehR
+Downloading GitHub repo hadley/ggplot2@master
+from URL https://api.github.com/repos/hadley/ggplot2/zipball/master
+Skipping ggplot2, it is already being installed.
+Downloading GitHub repo trinker/plotflow@master
+from URL https://api.github.com/repos/trinker/plotflow/zipball/master
+Installing plotflow
+Downloading GitHub repo hadley/ggplot2@master
+from URL https://api.github.com/repos/hadley/ggplot2/zipball/master
+Skipping ggplot2, it is already being installed.
+'/PHShome/cz425/anaconda2/lib/R/bin/R' --no-site-file --no-environ --no-save  \
+  --no-restore --quiet CMD INSTALL  \
+  '/tmp/RtmpZsLBzZ/devtoolsc200759a492e/trinker-plotflow-30dff9f'  \
+  --library='/PHShome/cz425/R_libs' --install-tests 
+
+* installing *source* package ‘plotflow’ ...
+** R
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (plotflow)
+'/PHShome/cz425/anaconda2/lib/R/bin/R' --no-site-file --no-environ --no-save  \
+  --no-restore --quiet CMD INSTALL  \
+  '/tmp/RtmpZsLBzZ/devtoolsc2004287e1a7/ClaraMarquardt-ehR-0afb02d'  \
+  --library='/PHShome/cz425/R_libs' --install-tests 
+
+* installing *source* package ‘ehR’ ...
+** R
+** data
+*** moving datasets to lazyload DB
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (ehR)
+'/PHShome/cz425/anaconda2/lib/R/bin/R' --no-site-file --no-environ --no-save  \
+  --no-restore --quiet CMD INSTALL  \
+  '/data/zolab/methods_new/base_code/feature_construction_new/FEATure'  \
+  --library='/PHShome/cz425/R_libs' --install-tests 
+
+* installing *source* package ‘FEATure’ ...
+** R
+** data
+*** moving datasets to lazyload DB
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (FEATure)
+Error in loadNamespace(name) : there is no package called ‘git2r’
+Calls: install ... tryCatch -> tryCatchList -> tryCatchOne -> <Anonymous>
+Execution halted

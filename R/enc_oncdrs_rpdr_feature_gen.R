@@ -6,22 +6,25 @@
 #'
 #' @export
 #' @import data.table
+#' @param cohort
+#' @param cohort_key_var_merge
 #' @return
 #' @examples
 
- enc_oncdrs_rpdr_feature_gen <- function() {
-
+ enc_oncdrs_rpdr_feature_gen <- function(cohort, cohort_key_var_merge, cohort_key_var) {
+  
+  print("launching enc_oncdrs_rpdr_feature_gen")
   
   ##############################################################################
   ##############################################################################
   ##############################################################################
 
   ##### generate both files
-  source(enc_feature_code)
-  enc <- enc_feature_gen()
+  # source(enc_feature_code)
+  enc <- enc_feature_gen(cohort, cohort_key_var_merge, cohort_key_var)
 
-  source(enc_oncdrs_feature_code)
-  enc_oncdrs <- enc_oncdrs_feature_gen()
+  # source(enc_oncdrs_feature_code)
+  enc_oncdrs <- enc_oncdrs_feature_gen(cohort, cohort_key_var_merge, cohort_key_var)
   
   ###### merge
   enc_oncdrs_rpdr <- enc
