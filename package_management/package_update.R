@@ -14,7 +14,7 @@
 
 # parameters
 package_path         <- commandArgs(trailingOnly = TRUE)[1]
-package_name    <- commandArgs(trailingOnly = TRUE)[2]
+package_name         <- commandArgs(trailingOnly = TRUE)[2]
 
 print(sprintf("package_path: %s",  package_path))
 print(sprintf("package_name: %s",  package_name))
@@ -46,7 +46,7 @@ try(remove.packages(package_name))
 # fresh install
 #-------------------------------------------
 setwd("..")
-install(package_name, dependencies = FALSE)
+install(package_name, dependencies = TRUE)
 library(package_name,character.only = TRUE)
 
 # generate overview of package

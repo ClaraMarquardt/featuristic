@@ -19,7 +19,8 @@ chemo_oncdrs_feature_gen <- function(cohort, cohort_key_var_merge, cohort_key_va
 
   ##############################################################################
   ### load the dia_feature code
-  chemo_oncdrs <- med_feature_gen(chemo_oncdrs_file_mod, leak_oncdrs_chemo_day)
+  chemo_oncdrs <- med_feature_gen(cohort, cohort_key_var_merge, cohort_key_var, 
+    chemo_oncdrs_file_mod, leak_oncdrs_chemo_day)
 
   ##############################################################################
   ### rename the variables

@@ -58,7 +58,6 @@ feature_compilation <- function(control_file_path) {
 
     }
 
-
 	if (nrow(cohort_extra_col)>0) {
 	  pred_set <- cohort_extra_col[pred_set, on=c("outcome_id")]
 	}
@@ -109,7 +108,7 @@ feature_compilation <- function(control_file_path) {
 
 	# identify quant/qual var
     #---------------------------------------------#
-    variable_type <- data.table(var_type=sapply(pred_set, class))
+    variable_type <- data.table(var_type=unlist(sapply(pred_set, class)))
 	variable_type[, var_type_count:=.N, by=c("var_type")]
 	print(unique(variable_type, by=c("var_type")))
 
@@ -122,7 +121,7 @@ feature_compilation <- function(control_file_path) {
 		class(x)[1]) %in% c("integer")))), with=F]), union(cohort_key_var, 
 		names(cohort_extra_col)))
 	write.csv(indic_var, paste0(temp_folder, "_indic_var.csv"), row.names=F)
-	print("a")
+	
 	if (miss_imp==FALSE) {
 
 		num_factor_var_mod <- setdiff(unique(c(num_factor_var, grep(non_impute_var_cat, 
@@ -137,18 +136,17 @@ feature_compilation <- function(control_file_path) {
 		num_factor_var <- num_factor_var_mod
 
 	} 
-	print("a")
+	
 
     # Missingness output - documentation (1)
 	# ----------------------------------------------------------------------------#
-	
 	if (miss_hist==TRUE) {
 	
 		incomplete_hist(pred_set[, mget(setdiff(names(pred_set),
 			union(names(cohort_extra_col), cohort_key_var)))], num_factor_var, indic_var, output_folder, 
 			cohort_name, "raw")
 	}
-	print("a")
+	
 
 
 	# impose thresholds
@@ -172,25 +170,29 @@ feature_compilation <- function(control_file_path) {
 		gc()
 
 	}
-	print("a")
+
 
 	# deal with missing (numeric data)
    	#---------------------------------------------#
-	pred_set_missing <- sapply(pred_set[, mget(c(num_factor_var))], function(y) sum(is.na(y)))
+   	if (length(num_factor_var)>0) {
+		pred_set_missing <- sapply(pred_set[, mget(c(num_factor_var))], function(y) sum(is.na(y)))
+	} else {
+		pred_set_missing  <- 0
+	}
 	pred_set_missing_perc <- perc(pred_set_missing, (nrow(pred_set)), digit=0)
-	 	print("a")
+
 
 	# deal with 0,1 data (imputed dummy data)
 	#---------------------------------------------#
 	pred_set_zero <- sapply(pred_set[, mget(indic_var)], function(y) sum(y==0, na.rm=T))
 	pred_set_zero_perc <- perc(pred_set_zero, (nrow(pred_set)), digit=0)	
-		print("a")
+
 
 	# identify 100% missing/0 observations
 	#---------------------------------------------#
 	col_omit_missing <- pred_set_missing_perc[pred_set_missing_perc==100]
 	col_omit_zero    <- pred_set_zero_perc[pred_set_zero_perc == 100]	
-		print("a")
+	
 
 	# deal with  missing  - ext (numeric data)
    	#---------------------------------------------#	
@@ -199,7 +201,7 @@ feature_compilation <- function(control_file_path) {
 			pred_set_missing_perc>quant_missing_threshold[[i]]]
 			col_omit_missing <- c(col_omit_missing, temp)
 	}
-		print("a")
+
 
 	# deal with 0,1 data  - ext (imputed dummy data)
 	#---------------------------------------------#
@@ -208,17 +210,16 @@ feature_compilation <- function(control_file_path) {
 			pred_set_zero_perc>indic_missing_threshold[[i]]]
 			col_omit_zero <- c(col_omit_zero, temp)
 	}
- 	print("a")
+
 
 	col_omit_missing_name <- names(col_omit_missing)
 	col_omit_zero_name    <- names(col_omit_zero)
-	print("a")
 
 	col_omit_missing <- col_omit_missing[names(col_omit_missing) %in% col_omit_missing_name]
 	col_omit_zero    <- col_omit_zero[names(col_omit_zero) %in% col_omit_zero_name]
 
 	col_omit <- unique(union(col_omit_missing_name, col_omit_zero_name))
-	print("a")
+
 
 	cat(sprintf("columns that are ommitted - all / more than %s percent of data points missing (%d) [numeric/factor] (%s) \n// all / more than %s percent of data points 0 (%d) [indic] (%s) \n// total omissions (%d) \n", 
 		paste0(paste0(quant_missing_threshold, "%"), collapse=" / "), 
@@ -226,7 +227,7 @@ feature_compilation <- function(control_file_path) {
 		paste0(paste0(indic_missing_threshold, "%"), collapse=" / "), 
 		length(unique(col_omit_zero_name)), paste0(name_ext_name_extended, collapse= " / "), 
 		length(unique(col_omit))))
-	print("a")
+
 
 	zero_col <- length(unique(col_omit_zero_name))
 	na_col   <- length(unique(col_omit_missing_name))
@@ -234,13 +235,12 @@ feature_compilation <- function(control_file_path) {
     if (length(col_omit>0)) {
 		pred_set[, c(col_omit):=NULL]
 	}
-	print("a")
 
 	obs_check(pred_set)
 
     # Missingness output - documentation (2)
 	# ----------------------------------------------------------------------------#
-    variable_type <- data.table(var_type=sapply(pred_set, class))
+    variable_type <- data.table(var_type=unlist(sapply(pred_set, class)))
 	variable_type[, var_type_count:=.N, by=c("var_type")]
 	print(unique(variable_type, by=c("var_type")))
 
@@ -324,7 +324,8 @@ feature_compilation <- function(control_file_path) {
 	var_name_raw   <- copy(names(pred_set))
 	var_name_final <- copy(names(pred_set))
 	
-	date_col <- pred_set[, c(which(sapply(pred_set, function(x) 
+
+	date_col  <- pred_set[, c(which(sapply(pred_set, function(x) 
 		class(x)[1]) %in% c("Date"))), with=F]
     date_col_table <- data.table(date=t(date_col[1]), 
     	var_name=names(date_col))
@@ -476,11 +477,11 @@ feature_compilation <- function(control_file_path) {
 	cat("\n\n")
 
 	# variable types
-	variable_type <- data.table(var_type=sapply(pred_set_final, class))
+	variable_type <- data.table(var_type=unlist(sapply(pred_set_final, class)))
 	variable_type[, var_type_count:=.N, by=c("var_type")]
 
-	variable_type_var <- data.table(var_type=sapply(pred_set_final[, mget(grep("^var_", 
-		names(pred_set_final), value=T))], class))
+	variable_type_var <- data.table(var_type=unlist(sapply(pred_set_final[, mget(grep("^var_", 
+		names(pred_set_final), value=T))], class)))
 	variable_type_var[, var_type_count:=.N, by=c("var_type")]
 	
 	cat("var type all - pred set final")
@@ -516,7 +517,8 @@ feature_compilation <- function(control_file_path) {
 	# ----------------------------------------------------------------------------#
 
 	# preparation
-    leak_table <- data.table(var_name=leak_list, leak_day=mget(leak_list))
+    leak_table <- data.table(var_name=leak_list, leak_day=mget(leak_list, 
+    	env=.GlobalEnv))
 
 	# set-up
 	feature_vital_sign <- list()
@@ -616,7 +618,7 @@ feature_compilation <- function(control_file_path) {
 		feature_vital_sign_raw <- fread(feature_vital_sign_loc)
 
 		feature_vital_sign_table <- list_table(feature_vital_sign, current_date,
- 			vital_signs_merge=T, vital_signs_old=feature_vital_sign_raw)
+ 			merge=T, old=feature_vital_sign_raw)
 
 		ps("sucessfully generated feature vital signs _table_ (appended)")
 
@@ -625,14 +627,15 @@ feature_compilation <- function(control_file_path) {
 	} else {
 			
 		feature_vital_sign_table <- list_table(feature_vital_sign, current_date,
- 			vital_signs_merge=F)
+ 			merge=F)
 
 		ps("sucessfully generated feature vital signs _table_ (new)")
 
 		print(head(feature_vital_sign_table))
 
 	}
-	
+
+
 	# save
 	write.csv(feature_vital_sign_table, feature_vital_sign_loc, row.names=F, 
 		na="")
@@ -642,7 +645,7 @@ feature_compilation <- function(control_file_path) {
 	#----------------------------------------------------------------------------#
 	print("start generating feature vis db")
 
-	return_mult[var_list_output] <- feature_structure_vis()
+	var_list_output <- feature_structure_vis(var_name_vis)
 
 	# create specific folder & save
 	dir.create(vis_folder_spec)
