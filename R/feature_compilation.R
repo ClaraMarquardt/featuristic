@@ -72,6 +72,9 @@ feature_compilation <- function(control_file_path) {
 
 	gc()
 
+	## ensure that no special characters in names
+	setnames(pred_set, gsub("&", "", names(pred_set)))
+
 	# ensure that time_min, time_max variables are included in cohort_extra_col
 	#----------------------------------------------------------------------------#
 	cohort_extra_col <- cbind(cohort_extra_col, pred_set[, 

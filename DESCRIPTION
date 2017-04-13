@@ -8,7 +8,7 @@ Depends:
 License: \
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 5.0.1
 Imports:
     data.table,
     shape,
@@ -29,13 +29,8 @@ Imports:
     stringr,
     taxize,
     tidyr,
-    VennDiagram,
     zoo,
-    riverplot,
     RColorBrewer,
-    munsell,
-    knitr,
-    rmarkdown,
     imputeMissings,
     ehR
 Remotes: ClaraMarquardt/ehR
