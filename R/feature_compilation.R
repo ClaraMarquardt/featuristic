@@ -73,7 +73,7 @@ feature_compilation <- function(control_file_path) {
 	gc()
 
 	## ensure that no special characters in names
-	setnames(pred_set, gsub("&", "", names(pred_set)))
+	setnames(pred_set, gsub("[^a-zA-Z_\\.0-9]", "_", names(pred_set)))
 
 	# ensure that time_min, time_max variables are included in cohort_extra_col
 	#----------------------------------------------------------------------------#
@@ -295,7 +295,7 @@ feature_compilation <- function(control_file_path) {
 		pred_set_missing     <- pred_set[, mget(c(missing_var))]
 		pred_set_non_missing <- pred_set[, mget(c(setdiff(names(pred_set), c(missing_var))))]
 	
-		pred_set_missing <- impute(pred_set_missing)
+		pred_set_missing <- imputeMissings::impute(pred_set_missing)
 
 		pred_set <- cbind(pred_set_non_missing, pred_set_missing)
 
@@ -369,9 +369,17 @@ feature_compilation <- function(control_file_path) {
 
 	var_name_final <- gsub("max_diff$", "timeframe_diff_max", var_name_final)
     
+    # ensure no duplicates
+    dupl <- which(var_name_final %in% var_name_final[duplicated(var_name_final)])
+    for (i in dupl) {
+			var_name_final[i] <-  gsub("_timeframe", 
+				paste0( i, "_timeframe"), var_name_final[i])
+    }
+	
     # rename
     setnames(pred_set, var_name_final)
 
+ 
     # add 'var' to identify features
 	setnames(pred_set, setdiff(names(pred_set), c(cohort_key_var, names(cohort_extra_col))),
 	 paste0("var_", setdiff(names(pred_set), c(cohort_key_var, names(cohort_extra_col)))))
@@ -390,22 +398,7 @@ feature_compilation <- function(control_file_path) {
 
 	# cast the factor columns such that factors are converted to independent indicator variables
 	factor_var <- names(pred_set)[which(sapply(pred_set, function(x) class(x)[1]) %in% c("factor"))]
-	pred_set[, c(factor_var):=lapply(.SD, function(x) gsub("[^a-zA-Z0-9\\._ ]", "", x)), .SDcols=factor_var]
-	for (x in factor_var) {
-		# what are the factors we are looking to cast? (be sure to remove NA as a factor!)
-		factors <- setdiff(as.character(unique(pred_set[, get(x)])), NA)
-		# do not do this if the factors are already indicators
-		# if(all.equal(sort(factors), c("0", "1"))) 
-		if(is.na(sum(as.numeric(factors)))){
-			casting_formula <- as.formula(paste0("outcome_id + ... ~ ", as.character(x)))
-			pred_set <- data.table(dcast(pred_set, casting_formula, fun.agg = length, value.var = x))
-			# drop the NA column that is created when we cast a factor column with at least one NA value
-			pred_set[, "NA" := NULL, with = FALSE]
-			setnames(pred_set, as.character(factors), gsub(" ", "_", paste0(x, "_", factors)))
-		}
-	}
-
-	# pred_set[, c(factor_var):=lapply(.SD, function(x) as.integer(x)), .SDcols=names(pred_set)[factor_var]]
+	pred_set <- one_hot_encoding(pred_set, factor_var)
 
     # format names
 	# ----------------------------------------------------------------------------#
@@ -425,11 +418,8 @@ feature_compilation <- function(control_file_path) {
     var_name_final <- gsub("_$", "", var_name_final)
     setnames(pred_set_final, var_name_final)
 
-
 	write.csv(final_feature_coll, paste0(output_folder, "final_feature_coll_", 
 		cohort_name, "_", current_date, ".csv"), row.names=F)
-
-
 
 	# save
 	# ----------------------------------------------------------------------------#
