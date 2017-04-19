@@ -215,7 +215,7 @@ lab_feature_gen <- function(cohort, cohort_key_var_merge, cohort_key_var, lab_fi
   lab_num <- lab[, mget(grep("lab.numeric", names(lab), value=T))]
   
   non_days_to_last_var <- setdiff(names(lab_num),grep("days_to_last", names(lab_num),value=T))
-  set_na_zero(lab_num, subset_col=non_days_to_last_var)
+  set_na_zero(lab_num, replace=NA, subset_col=non_days_to_last_var)
 
   lab_num[, grep("lab_lab.numeric", names(lab_num), value=T):=lapply(.SD, function(x) 
     round(x, digits=2)), .SDcols=grep("lab_lab.numeric", names(lab_num))]
