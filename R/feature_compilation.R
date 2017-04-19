@@ -410,7 +410,6 @@ feature_compilation <- function(control_file_path) {
 		grep("_time_min|_time_max|_timeframe_max|timeframe_diff_max", 
 		names(pred_set), value=T)))]
 
-
 	final_feature_coll <- feature_coll(pred_set_final)
 
 	# rename

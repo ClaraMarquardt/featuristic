@@ -163,7 +163,7 @@ lvs_feature_gen <- function(cohort, cohort_key_var_merge, cohort_key_var, lvs_fi
   lvs <- lvs[cohort, mget(names(lvs)), on=c("outcome_id", "empi", "pred_date")]
   
   non_days_to_last_var <- setdiff(names(lvs),grep("days_to_last", names(lvs),value=T))
-  set_na_zero(lvs, subset_col=non_days_to_last_var)
+  set_na_zero(lvs, replace=NA, subset_col=non_days_to_last_var)
 
   lvs[, grep("lvs_lvs.value", names(lvs), value=T):=lapply(.SD, function(x) 
     round(x, digits=2)), .SDcols=grep("lvs_lvs.value", names(lvs))]
