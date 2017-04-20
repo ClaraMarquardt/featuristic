@@ -425,7 +425,26 @@ feature_compilation <- function(control_file_path) {
 	saveRDS(pred_set, file = paste0(temp_folder, "pred_set_final_temp_", cohort_name,".Rds"))
 	saveRDS(pred_set_final, file = paste0(modified_folder, "pred_set_final_", cohort_name,".Rds"))
 	
-	write.csv(as.data.table(names(pred_set_final)), file = paste0(output_folder, 
+
+
+	# final variable overview
+	# ----------------------------------------------------------------------------#
+
+	pred_set_zero        <- sapply(pred_set_final, function(y) sum(y==0, na.rm=T))
+	pred_set_zero_perc   <- perc(pred_set_zero, (nrow(pred_set)), digit=1)	
+
+	pred_set_missing          <- sapply(pred_set_final, function(y) sum(is.na(y)))
+	pred_set_missing_perc     <- perc(pred_set_missing, (nrow(pred_set)), digit=1)
+
+	var_type                  <- sapply(pred_set_final, function(y) class(y)[[1]])
+
+	final_var_dt <- data.table(var_name=names(pred_set_final))
+	final_var_dt[, zero_perc:=pred_set_zero_perc]
+	final_var_dt[, missing_perc:=pred_set_missing_perc]
+	final_var_dt[, variable_type:=var_type]
+	
+	# save
+	write.csv(final_var_dt, file = paste0(output_folder, 
 		"pred_set_final_var_name_", cohort_name, ".csv"),row.names=F)
 
 
