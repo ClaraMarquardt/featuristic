@@ -585,8 +585,8 @@ feature_compilation <- function(control_file_path) {
     															collapse=" - "), na_col)	
     feature_vital_sign$indic_missing_threshold            <- sprintf("%s (omit: %d)", paste0(unlist(indic_missing_threshold),
     															collapse=" - "), zero_col)
-    feature_vital_sign$missing_imputation                 <- ifelse(fill_na, sprintf("%s (method: %s / perc.values imputed: %d)", as.character(fill_na),
-     															fill_na_method, impute_value_perc), sprintf("Missing imputation disabled\n."))	
+    feature_vital_sign$missing_imputation                 <- ifelse(fill_na, sprintf("%s (method: %s / perc.values imputed: %f)", as.character(fill_na),
+     															as.character(fill_na_method), as.numeric(impute_value_perc)), sprintf("Missing imputation disabled\n."))	
 
   
     list_space("feature_vital_sign")
