@@ -3,38 +3,34 @@ Title: Generate ehR features
 Version: 0.0.0.9000
 Authors@R: person("Clara", "Marquardt", email = "marquardt.clara@gmail.com", role = c("aut", "cre"))
 Description: \
-Depends: R (>= 3.3.1)
+Depends:
+    R (>= 3.3.1)
 License: \
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 5.0.1
 Imports:
-	data.table, 
-	shape, 
-	diagram, 
-	dplyr, 
-	futile.logger, 
-	ggplot2, 
-    icd, 
-    lubridate, 
-    magrittr, 
-    NCmisc, 
-    parallel, 
-    pbapply, 
-    plyr, 
-    reader, 
-    reshape, 
-    reshape2, 
-    stringr, 
-    taxize, 
-    tidyr, 
-    VennDiagram, 
-    zoo, 
-    riverplot, 
+    data.table,
+    shape,
+    diagram,
+    dplyr,
+    futile.logger,
+    ggplot2,
+    icd,
+    lubridate,
+    magrittr,
+    NCmisc,
+    parallel,
+    pbapply,
+    plyr,
+    reader,
+    reshape,
+    reshape2,
+    stringr,
+    taxize,
+    tidyr,
+    zoo,
     RColorBrewer,
-    munsell, 
-    knitr, 
-    rmarkdown, 
-    imputeMissings, 
+    imputeMissings,
     ehR
 Remotes: ClaraMarquardt/ehR

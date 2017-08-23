@@ -6,7 +6,9 @@
 #'
 #' @export
 #' @import data.table
-#' @param dia_file_mod
+#' @param cohort
+#' @param cohort_key_var_merge
+#' @param dia_file_mod_arg
 #' @param leak_dia_day
 #' @param combine
 #' @param dia_file_mod_ext
@@ -14,8 +16,10 @@
 #' @return
 #' @examples
 
- dia_feature_gen <- function(dia_file_mod=dia_file_mod, leak_dia_day=leak_dia_day, combine=FALSE, 
-  dia_file_mod_ext=NA, file_date_var="dia_date") {
+ dia_feature_gen <- function(cohort, cohort_key_var_merge, cohort_key_var, dia_file_mod_arg=dia_file_mod, 
+  leak_dia_day_arg=leak_dia_day, combine=FALSE,dia_file_mod_ext=NA, file_date_var="dia_date") {
+
+  print("launching dia_feature_gen")
 
   ##############################################################################
   ### Load the  modified/pre-processed dia file for the specified data sample -- 
@@ -23,13 +27,10 @@
   ### batchmode job using machine/function_class_batchmode.txt)
     
   ## helpers
-  required_helpers <- c(
-     "gagne_cat"
-  )
-  load_helpers(required_helpers)
+  # required_helpers: "gagne_code"
 
   # (a) load the stored code - return error message if file does not exist
-  tryCatch(dia <- readRDS_merge(dia_file_mod), warning=function(w)
+  tryCatch(dia <- readRDS_merge(dia_file_mod_arg), warning=function(w)
     print("no classified dia file available for the data sample"))
     # XXX NOTE: RDS file preserves formatting of empi as character
 
@@ -79,8 +80,8 @@
 
   ### implement leakage control (as specified in control file - 
   ### omit day of outcome/days pre outcome)
-  if (!is.na(leak_dia_day)) {
-    dia <- dia[!(pred_date-dia_date_1<=leak_dia_day)]
+  if (!is.na(leak_dia_day_arg)) {
+    dia <- dia[!(pred_date-dia_date_1<=leak_dia_day_arg)]
   }
   
   ##############################################################################
@@ -361,10 +362,10 @@
   #  -1 * hivaids_romano +
   #  -1 * hypertension_elixhauser)
 
-  # XXX NOTE: gagne_cat + gagne_weights + gagne_formula -> recreate 
+  # XXX NOTE: gagne_code + gagne_weights + gagne_formula -> recreate 
   # gagne_formula_exp dynamically 
-  gagne_name <- gagne_cat$gagne
-  gagne_weight <- as.numeric(gsub("_", "-", gagne_cat$weight))
+  gagne_name <- gagne_code$gagne
+  gagne_weight <- as.numeric(gsub("_", "-", gagne_code$weight))
 
   gagne_formula_exp <- ""
 

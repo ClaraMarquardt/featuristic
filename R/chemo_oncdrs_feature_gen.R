@@ -6,17 +6,21 @@
 #'
 #' @export
 #' @import data.table
+#' @param cohort
+#' @param cohort_key_var_merge
 #' @param 
 #' @return
 #' @examples
 
 
-chemo_oncdrs_feature_gen <- function() {
+chemo_oncdrs_feature_gen <- function(cohort, cohort_key_var_merge, cohort_key_var) {
+
+  print("launching chemo_oncdrs_feature_gen")
 
   ##############################################################################
   ### load the dia_feature code
-  source(med_feature_code)
-  chemo_oncdrs <- med_feature_gen(chemo_oncdrs_file_mod, leak_oncdrs_chemo_day)
+  chemo_oncdrs <- med_feature_gen(cohort, cohort_key_var_merge, cohort_key_var, 
+    chemo_oncdrs_file_mod, leak_oncdrs_chemo_day)
 
   ##############################################################################
   ### rename the variables

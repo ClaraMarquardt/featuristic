@@ -1,0 +1,297 @@
+
+R version 3.3.1 (2016-06-21) -- "Bug in Your Hair"
+Copyright (C) 2016 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[1] "*** Successfully loaded ~/.Rprofile ***"
+> #----------------------------------------------------------------------------#
+> 
+> # Purpose:     Batch mode script to update package 
+> # Author:      Clara Marquardt
+> # Date:        2017
+> 
+> 
+> #----------------------------------------------------------------------------#
+> 
+> 
+> #----------------------------------------------------------------------------#
+> #                                    CONTROL                                 #
+> #----------------------------------------------------------------------------#
+> 
+> # parameters
+> package_path         <- commandArgs(trailingOnly = TRUE)[1]
+> package_name         <- commandArgs(trailingOnly = TRUE)[2]
+> 
+> print(sprintf("package_path: %s",  package_path))
+[1] "package_path: /data/zolab/methods_new/base_code/feature_construction_new/FEATure"
+> print(sprintf("package_name: %s",  package_name))
+[1] "package_name: FEATure"
+> 
+> # dependencies
+> library("devtools")
+> library(roxygen2)
+> library(data.table)
+> library(zoo)
+
+Attaching package: ‘zoo’
+
+The following objects are masked from ‘package:base’:
+
+    as.Date, as.Date.numeric
+
+> 
+> # paths
+> setwd(package_path)
+> 
+> #----------------------------------------------------------------------------#
+> #                                    CODE                                    #
+> #----------------------------------------------------------------------------#
+> 
+> # update the documentation
+> #-------------------------------------------
+> document()
+Updating FEATure documentation
+Loading FEATure
+Writing NAMESPACE
+There were 50 or more warnings (use warnings() to see the first 50)
+> 
+> # uninstall existing versions
+> #-------------------------------------------
+> package_spec <- paste0("package:", package_name)
+> detach(package_spec, unload=TRUE,character.only = TRUE)
+> 
+> try(remove.packages(package_name))
+Removing package from ‘/PHShome/cz425/R_libs’
+(as ‘lib’ is unspecified)
+> 
+> # fresh install
+> #-------------------------------------------
+> setwd("..")
+> try(install(package_name, dependencies = TRUE))
+Installing FEATure
+Downloading GitHub repo hadley/ggplot2@master
+from URL https://api.github.com/repos/hadley/ggplot2/zipball/master
+Installing ggplot2
+'/PHShome/cz425/anaconda2/lib/R/bin/R' --no-site-file --no-environ --no-save  \
+  --no-restore --quiet CMD INSTALL  \
+  '/tmp/Rtmp9mGviK/devtools904d83eb05/tidyverse-ggplot2-f4398b6'  \
+  --library='/PHShome/cz425/R_libs' --install-tests 
+
+* installing *source* package ‘ggplot2’ ...
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** tests
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded
+* DONE (ggplot2)
+Downloading GitHub repo ClaraMarquardt/ehR@master
+from URL https://api.github.com/repos/ClaraMarquardt/ehR/zipball/master
+Installing ehR
+Downloading GitHub repo hadley/ggplot2@master
+from URL https://api.github.com/repos/hadley/ggplot2/zipball/master
+Skipping ggplot2, it is already being installed.
+Downloading GitHub repo trinker/plotflow@master
+from URL https://api.github.com/repos/trinker/plotflow/zipball/master
+Installing plotflow
+Downloading GitHub repo hadley/ggplot2@master
+from URL https://api.github.com/repos/hadley/ggplot2/zipball/master
+Skipping ggplot2, it is already being installed.
+'/PHShome/cz425/anaconda2/lib/R/bin/R' --no-site-file --no-environ --no-save  \
+  --no-restore --quiet CMD INSTALL  \
+  '/tmp/Rtmp9mGviK/devtools9046e9bfcb6/trinker-plotflow-30dff9f'  \
+  --library='/PHShome/cz425/R_libs' --install-tests 
+
+* installing *source* package ‘plotflow’ ...
+** R
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (plotflow)
+'/PHShome/cz425/anaconda2/lib/R/bin/R' --no-site-file --no-environ --no-save  \
+  --no-restore --quiet CMD INSTALL  \
+  '/tmp/Rtmp9mGviK/devtools90425979505/ClaraMarquardt-ehR-86f98e1'  \
+  --library='/PHShome/cz425/R_libs' --install-tests 
+
+* installing *source* package ‘ehR’ ...
+** R
+** data
+*** moving datasets to lazyload DB
+** preparing package for lazy loading
+Warning: replacing previous import ‘data.table::month’ by ‘lubridate::month’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::hour’ by ‘lubridate::hour’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::quarter’ by ‘lubridate::quarter’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::week’ by ‘lubridate::week’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::year’ by ‘lubridate::year’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::wday’ by ‘lubridate::wday’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::mday’ by ‘lubridate::mday’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::yday’ by ‘lubridate::yday’ when loading ‘ehR’
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+Warning: replacing previous import ‘data.table::month’ by ‘lubridate::month’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::hour’ by ‘lubridate::hour’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::quarter’ by ‘lubridate::quarter’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::week’ by ‘lubridate::week’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::year’ by ‘lubridate::year’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::wday’ by ‘lubridate::wday’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::mday’ by ‘lubridate::mday’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::yday’ by ‘lubridate::yday’ when loading ‘ehR’
+* DONE (ehR)
+'/PHShome/cz425/anaconda2/lib/R/bin/R' --no-site-file --no-environ --no-save  \
+  --no-restore --quiet CMD INSTALL  \
+  '/data/zolab/methods_new/base_code/feature_construction_new/FEATure'  \
+  --library='/PHShome/cz425/R_libs' --install-tests 
+
+* installing *source* package ‘FEATure’ ...
+** R
+** data
+*** moving datasets to lazyload DB
+** preparing package for lazy loading
+Warning: replacing previous import ‘data.table::between’ by ‘dplyr::between’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::last’ by ‘dplyr::last’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::month’ by ‘lubridate::month’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::hour’ by ‘lubridate::hour’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::quarter’ by ‘lubridate::quarter’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::week’ by ‘lubridate::week’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::year’ by ‘lubridate::year’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::wday’ by ‘lubridate::wday’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::mday’ by ‘lubridate::mday’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::yday’ by ‘lubridate::yday’ when loading ‘ehR’
+Warning: replacing previous import ‘dplyr::compute’ by ‘imputeMissings::compute’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::month’ by ‘lubridate::month’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::hour’ by ‘lubridate::hour’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::intersect’ by ‘lubridate::intersect’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::quarter’ by ‘lubridate::quarter’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::week’ by ‘lubridate::week’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::year’ by ‘lubridate::year’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::union’ by ‘lubridate::union’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::wday’ by ‘lubridate::wday’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::setdiff’ by ‘lubridate::setdiff’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::mday’ by ‘lubridate::mday’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::yday’ by ‘lubridate::yday’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::failwith’ by ‘plyr::failwith’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::id’ by ‘plyr::id’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::summarize’ by ‘plyr::summarize’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::count’ by ‘plyr::count’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::desc’ by ‘plyr::desc’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::mutate’ by ‘plyr::mutate’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::arrange’ by ‘plyr::arrange’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::rename’ by ‘plyr::rename’ when loading ‘FEATure’
+Warning: replacing previous import ‘lubridate::here’ by ‘plyr::here’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::summarise’ by ‘plyr::summarise’ when loading ‘FEATure’
+Warning: replacing previous import ‘lubridate::stamp’ by ‘reshape::stamp’ when loading ‘FEATure’
+Warning: replacing previous import ‘plyr::rename’ by ‘reshape::rename’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::melt’ by ‘reshape::melt’ when loading ‘FEATure’
+Warning: replacing previous import ‘plyr::round_any’ by ‘reshape::round_any’ when loading ‘FEATure’
+Warning: replacing previous import ‘reshape::recast’ by ‘reshape2::recast’ when loading ‘FEATure’
+Warning: replacing previous import ‘reshape::melt’ by ‘reshape2::melt’ when loading ‘FEATure’
+Warning: replacing previous import ‘reshape::colsplit’ by ‘reshape2::colsplit’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::dcast’ by ‘reshape2::dcast’ when loading ‘FEATure’
+Warning: replacing previous import ‘magrittr::extract’ by ‘tidyr::extract’ when loading ‘FEATure’
+Warning: replacing previous import ‘reshape::expand’ by ‘tidyr::expand’ when loading ‘FEATure’
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+Warning: replacing previous import ‘data.table::between’ by ‘dplyr::between’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::last’ by ‘dplyr::last’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::month’ by ‘lubridate::month’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::hour’ by ‘lubridate::hour’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::quarter’ by ‘lubridate::quarter’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::week’ by ‘lubridate::week’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::year’ by ‘lubridate::year’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::wday’ by ‘lubridate::wday’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::mday’ by ‘lubridate::mday’ when loading ‘ehR’
+Warning: replacing previous import ‘data.table::yday’ by ‘lubridate::yday’ when loading ‘ehR’
+Warning: replacing previous import ‘dplyr::compute’ by ‘imputeMissings::compute’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::month’ by ‘lubridate::month’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::hour’ by ‘lubridate::hour’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::intersect’ by ‘lubridate::intersect’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::quarter’ by ‘lubridate::quarter’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::week’ by ‘lubridate::week’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::year’ by ‘lubridate::year’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::union’ by ‘lubridate::union’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::wday’ by ‘lubridate::wday’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::setdiff’ by ‘lubridate::setdiff’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::mday’ by ‘lubridate::mday’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::yday’ by ‘lubridate::yday’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::failwith’ by ‘plyr::failwith’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::id’ by ‘plyr::id’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::summarize’ by ‘plyr::summarize’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::count’ by ‘plyr::count’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::desc’ by ‘plyr::desc’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::mutate’ by ‘plyr::mutate’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::arrange’ by ‘plyr::arrange’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::rename’ by ‘plyr::rename’ when loading ‘FEATure’
+Warning: replacing previous import ‘lubridate::here’ by ‘plyr::here’ when loading ‘FEATure’
+Warning: replacing previous import ‘dplyr::summarise’ by ‘plyr::summarise’ when loading ‘FEATure’
+Warning: replacing previous import ‘lubridate::stamp’ by ‘reshape::stamp’ when loading ‘FEATure’
+Warning: replacing previous import ‘plyr::rename’ by ‘reshape::rename’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::melt’ by ‘reshape::melt’ when loading ‘FEATure’
+Warning: replacing previous import ‘plyr::round_any’ by ‘reshape::round_any’ when loading ‘FEATure’
+Warning: replacing previous import ‘reshape::recast’ by ‘reshape2::recast’ when loading ‘FEATure’
+Warning: replacing previous import ‘reshape::melt’ by ‘reshape2::melt’ when loading ‘FEATure’
+Warning: replacing previous import ‘reshape::colsplit’ by ‘reshape2::colsplit’ when loading ‘FEATure’
+Warning: replacing previous import ‘data.table::dcast’ by ‘reshape2::dcast’ when loading ‘FEATure’
+Warning: replacing previous import ‘magrittr::extract’ by ‘tidyr::extract’ when loading ‘FEATure’
+Warning: replacing previous import ‘reshape::expand’ by ‘tidyr::expand’ when loading ‘FEATure’
+* DONE (FEATure)
+Error in loadNamespace(name) : there is no package called ‘git2r’
+> library(package_name,character.only = TRUE)
+There were 34 warnings (use warnings() to see them)
+> 
+> # generate overview of package
+> #-------------------------------------------
+> overview <- as.data.table(library(help=package_name, 
++ 				character.only = TRUE)$info[[2]])
+> 
+> ## format
+> overview[V1 %like% "\\.$", id:=1:nrow(overview[V1 %like% "\\.$"])]
+> overview[, id:=na.locf(id, fromLast=TRUE)]
+> overview[, V1:=gsub("^[ ]*", "", V1)]
+> overview[, V1:=paste0(V1, collapse=" "), by=c("id")]
+> overview <- unique(overview, by=c("id"))
+> 
+> overview[, c("function_name"):=strsplit(V1, "   ")[[1]][1], by=c("id")]
+> overview[, c("function_desc"):=paste0(unlist(strsplit(V1, "   ")[[1]][-1]),collapse=""), 
++ 		by=c("id")]
+> overview[is.na(function_desc) | function_desc=="", function_desc:=gsub("([^ ]*)( )(.*)", 
++ 	"\\3", function_name), by=c("id")]
+> overview[, function_name:=gsub("([^ ]*)( )(.*)", "\\1", function_name), by=c("id")]
+> overview[,function_desc:=gsub("^[ ]*", "", function_desc)]
+> overview[, c("id", "V1"):=NULL]
+> 
+> ## save
+> write.csv(overview, paste0(package_path,"/function_overview.csv"), row.names=F)
+> 
+> #----------------------------------------------------------------------------#
+> #                                    END                                     #
+> #----------------------------------------------------------------------------#
+> 
+> proc.time()
+   user  system elapsed 
+ 41.833   5.192 128.555 

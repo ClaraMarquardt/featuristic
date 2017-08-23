@@ -6,8 +6,10 @@
 #'
 #' @export
 #' @import data.table
-#' @param lvs_file_mod
-#' @param leak_lvs_day
+#' @param cohort
+#' @param cohort_key_var_merge
+#' @param lvs_file_mod_arg
+#' @param leak_lvs_day_arg
 #' @param combine
 #' @param lvs_file_mod_ext
 #' @param lvs_file_mod_ext_ext
@@ -17,16 +19,19 @@
 #' @examples
 
 
-lvs_feature_gen <- function(lvs_file_mod=lvs_file_mod, leak_lvs_day=leak_lvs_day, combine=FALSE, 
+lvs_feature_gen <- function(cohort, cohort_key_var_merge, cohort_key_var, lvs_file_mod_arg=lvs_file_mod, 
+  leak_lvs_day_arg=leak_lvs_day, combine=FALSE, 
   lvs_file_mod_ext=NA, lvs_file_mod_ext_ext=NA, load=TRUE, file_date_var="lvs_date") {
-
+    
+  print("launching lvs_feature_gen")
+  
   ###############################################################################
   ### Load the  modified/pre-processed lvs file for the specified data sample -- 
   ### if no such file exists - excute the function_lvs_class.R code (access/submit as 
   ### batchmode job using machine/function_class_batchmode.txt)
     
   # (a) load the stored code - return error message if file does not exist
-  tryCatch(lvs <- readRDS_merge(lvs_file_mod), warning=function(w)
+  tryCatch(lvs <- readRDS_merge(lvs_file_mod_arg), warning=function(w)
     print("no classified lvs file available for the data sample"))
     # XXX NOTE: RDS file preserves formatting of empi as character
 
@@ -68,8 +73,8 @@ lvs_feature_gen <- function(lvs_file_mod=lvs_file_mod, leak_lvs_day=leak_lvs_day
 
   ### implement leakage control (as specified in control file - 
   ### omit day of outcome/days pre outcome)
-  if (!is.na(leak_lvs_day)) {
-    lvs <- lvs[!(pred_date-lvs_date_1<=leak_lvs_day)]
+  if (!is.na(leak_lvs_day_arg)) {
+    lvs <- lvs[!(pred_date-lvs_date_1<=leak_lvs_day_arg)]
   }
   
   ##############################################################################
@@ -158,7 +163,7 @@ lvs_feature_gen <- function(lvs_file_mod=lvs_file_mod, leak_lvs_day=leak_lvs_day
   lvs <- lvs[cohort, mget(names(lvs)), on=c("outcome_id", "empi", "pred_date")]
   
   non_days_to_last_var <- setdiff(names(lvs),grep("days_to_last", names(lvs),value=T))
-  set_na_zero(lvs, subset_col=non_days_to_last_var)
+  set_na_zero(lvs, replace=NA, subset_col=non_days_to_last_var)
 
   lvs[, grep("lvs_lvs.value", names(lvs), value=T):=lapply(.SD, function(x) 
     round(x, digits=2)), .SDcols=grep("lvs_lvs.value", names(lvs))]

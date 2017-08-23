@@ -6,17 +6,20 @@
 #'
 #' @export
 #' @import data.table
-#' @param 
+#' @param cohort
+#' @param cohort_key_var_merge 
 #' @return
 #' @examples
 
 
- dia_oncdrs_feature_gen <- function() {
+ dia_oncdrs_feature_gen <- function(cohort, cohort_key_var_merge, cohort_key_var) {
 
+  print("launching dia_oncdrs_feature_gen")
+  
   ##############################################################################
   ### load the dia_feature code
-  source(dia_feature_code)
-  dia_oncdrs <- dia_feature_gen(dia_oncdrs_file_mod, leak_oncdrs_dia_day)
+  dia_oncdrs <- dia_feature_gen(cohort, cohort_key_var_merge, cohort_key_var, 
+    dia_oncdrs_file_mod, leak_oncdrs_dia_day)
 
   ##############################################################################
   ### rename the variables

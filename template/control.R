@@ -14,6 +14,7 @@
 
 # set-up (DEFAULT)
 #-------------------------------------------------#
+print(Sys.time())
 current_date <- as.character(format(Sys.time(), "%d_%m_%Y")) 
 
 # dependencies  - project specific (CUSTOM)
@@ -29,40 +30,6 @@ output_folder_stored  <- "/data/zolab/pants/output_stored/"
 code_folder           <- "/data/zolab/pants/code/"
 vis_folder            <- "/data/zolab/pants/vis/"
 temp_folder            <- "/data/zolab/pants/temp/"
-
-# dependencies - feature_construction (DEFAULT)
-#----------------------------------------------------------------------------#
-wd_path   <- "/data/zolab/methods_new/base_code/feature_construction/"
-
-libraries <-  "machine_code/library.R"
-functions <-  "machine_code/function.R"
-helpers   <-  "machine_code/helper.R"
-theme     <-  "machine_code/theme.R"
-
-# code dependencies - feature_construction (DEFAULT)
-#--------------------------------#
-dem_feature_code <- "file_code/rpdr_dem/dem_feature_code.R"  						
-enc_feature_code <- "file_code/rpdr_enc/enc_feature_code.R"  						
-dia_feature_code <- "file_code/rpdr_dia/dia_feature_code.R" 				    	 
-prc_feature_code <- "file_code/rpdr_prc/prc_feature_code.R"  						
-lvs_feature_code <- "file_code/rpdr_lvs/lvs_feature_code.R"  						
-lab_feature_code <- "file_code/rpdr_lab/lab_feature_code.R"  						
-med_feature_code <- "file_code/rpdr_med/med_feature_code.R"  						
-mic_feature_code <- "file_code/rpdr_mic/mic_feature_code.R"  						
-ed_feature_code  <- "file_code/edadmin_ed/ed_feature_code.R"     						
-dia_oncdrs_feature_code   <- "file_code/oncdrs_dia/dia_oncdrs_feature_code.R"     
-chemo_oncdrs_feature_code <- "file_code/oncdrs_chemo/chemo_oncdrs_feature_code.R" 
-med_oncdrs_feature_code   <- "file_code/oncdrs_med/med_oncdrs_feature_code.R" 	  
-enc_oncdrs_feature_code   <- "file_code/oncdrs_enc/enc_oncdrs_feature_code.R"  	
-lab_oncdrs_feature_code   <- "file_code/oncdrs_lab/lab_oncdrs_feature_code.R"  	
-
-enc_oncdrs_rpdr_feature_code         <- "file_code/oncdrs_rpdr_enc/enc_oncdrs_rpdr_feature_code.R"  				 
-dia_oncdrs_rpdr_feature_code         <- "file_code/oncdrs_rpdr_dia/dia_oncdrs_rpdr_feature_code.R" 				     
-med_chemo_oncdrs_rpdr_feature_code   <- "file_code/oncdrs_rpdr_med_chemo/med_chemo_oncdrs_rpdr_feature_code.R" 
-lab_oncdrs_rpdr_feature_code 	     <- "file_code/oncdrs_rpdr_lab/lab_oncdrs_rpdr_feature_code.R"  				 
-lno_targex_lvs_num_num_feature_code  <- "file_code/targex_rpdr_lvs/lno_targex_lvs_num_num_feature_code.R"                   
-
-vis_update_code                      <- "/data/zolab/methods_new/vis/server_vis/vis_update.sh"  
 
 # samples and cohorts (CUSTOM)
 #----------------------------------------------------------------------------#
@@ -180,7 +147,7 @@ assemble_list <- list(
 	"dem", "prc", "lvs", "mic", "ed", "enc", 	
 	# "lab", "med", "dia", 
 	# oncdrs
-	# "dia_oncdrs", "chemo_oncdrs", "med_oncdrs","lab_oncdrs",
+	"dia_oncdrs", "chemo_oncdrs", "med_oncdrs","lab_oncdrs",
 	# combined
 	"dia_oncdrs_rpdr", "med_chemo_oncdrs_rpdr", "lab_oncdrs_rpdr",
 	"enc_oncdrs"
@@ -196,8 +163,7 @@ compile_list <- list(
 	# oncdrs
 	# "dia_oncdrs", "chemo_oncdrs", "med_oncdrs","lab_oncdrs",
 	# combined
-	"dia_oncdrs_rpdr", "med_chemo_oncdrs_rpdr", "lab_oncdrs_rpdr",
-	"enc_oncdrs"
+	"dia_oncdrs_rpdr", "med_chemo_oncdrs_rpdr", "lab_oncdrs_rpdr", "enc_oncdrs"
 )
 
 # feature selection
@@ -364,7 +330,6 @@ miss_hist <- FALSE       # generate missingness histograms ?
 # production vs. testing (DEFAULT)
 #----------------------------------------------------------------------------#
 test_raw_file <- FALSE  # use subset of data files ?
-test_cohort   <- FALSE  # use subset of cohort ?
 test_row 	  <- 20000  # rows in subsets of cohort/data files 
 
 

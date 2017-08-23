@@ -4,8 +4,12 @@
 \alias{dia_oncdrs_feature_gen}
 \title{Generate DFCI diagnosis-related features (dia_oncdrs data).}
 \usage{
-dia_oncdrs_feature_gen()
+dia_oncdrs_feature_gen(cohort, cohort_key_var_merge, cohort_key_var)
+}
+\arguments{
+\item{cohort_key_var_merge}{}
 }
 \description{
 \
 }
+

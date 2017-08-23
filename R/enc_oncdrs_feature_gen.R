@@ -6,11 +6,15 @@
 #'
 #' @export
 #' @import data.table
+#' @param cohort
+#' @param cohort_key_var_merge
 #' @return
 #' @examples
 
- enc_oncdrs_feature_gen <- function() {
-
+ enc_oncdrs_feature_gen <- function(cohort, cohort_key_var_merge, cohort_key_var) {
+  
+  print("launching enc_oncdrs_feature_gen")
+  
    ##############################################################################
   ### Load the  modified/pre-processed enc file for the specified data sample -- 
   ### if no such file exists - excute the function_enc_class.R code (access/submit as 
