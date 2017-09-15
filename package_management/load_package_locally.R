@@ -1,40 +1,49 @@
 #----------------------------------------------------------------------------#
 
-# Purpose:     Update FEATure package locally (within R)
-# Project:     FEATure 
+# Purpose:     Load scripts locally
 # Author:      Clara Marquardt
 # Date:        2017
 
-#----------------------------------------------------------------------------#
 
 #----------------------------------------------------------------------------#
-#                                   CONTROL                                  #
+
+
+#----------------------------------------------------------------------------#
+#                                    CONTROL                                 #
 #----------------------------------------------------------------------------#
 
-# set-up
-#-------------------------------------------------#
-print(sessionInfo())
-print(Sys.time())
-current_date <- as.character(format(Sys.time(), "%d_%m_%Y")) 
+# NOTE: manually define "package_path" (path to directory containing 
+# the featuristic repository (e.g. '/Users/../Desktop/'))
 
-# dependencies
-#-------------------------------------------------#
+print(sprintf("package_path: %s",  package_path))
 
-# working directory 
+# paths
 setwd(package_path)
 
 #----------------------------------------------------------------------------#
 #                                    CODE                                    #
 #----------------------------------------------------------------------------#
 
-for (x in list.files("./R")) {
+# load scripts locally
+#--------------------------------------# 
+for (x in list.files(paste0(package_path, "featuristic", "/R"))) {
 
-		print(sprintf("source: %s", x))
+  print(sprintf("source: %s", x))
 
-		source(paste0("./R/",x))
+  source(paste0(package_path, "featuristic", "/R/", x))
 
 }
 
+
+# load datasets locally
+#--------------------------------------# 
+for (x in list.files(paste0(package_path, "featuristic", "/data"))) {
+
+  print(sprintf("load: %s", x))
+
+  load(paste0(package_path, "featuristic", "/data/", x))
+
+}
 
 #----------------------------------------------------------------------------#
 #                                    END                                     #

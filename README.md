@@ -1,17 +1,25 @@
-# FEATure
+# featuristic
+
+-------
+NOTE: THIS VERSION OF THE REPOSITORY IS NO LONGER ACTIVELY MAINTAINED 
+
+_Please see https://github.com/sysmedlab/featuristic_
+
+------
 
 **Install** 
 
 ```
 library("devtools")  
-install_github("claramarquardt/FEATure",dependencies = TRUE)    
-library(FEATure)
+install_github("claramarquardt/featuristic",dependencies = TRUE)    
+library(featuristic)
 ```  
 **Documentation**
 - See function_overview.csv for an overview of all the functions (and data sets) included in the package 
 - *Usaging the package*
+
 ````
-1. Generate a local copy of the control.R template located at FEATure/template/control.R. 
+1. Generate a local copy of the control.R template located at featuristic/template/control.R. 
 2. Modify the settings contained in the control.R file (comments provided)
 3. *Construct features - Stage I*
 	feature_construction([path to local version of the control.R file])
@@ -37,7 +45,7 @@ install_github("hadley/devtools")
 - To contribute:
 ````
 # 1. Clone the repo
-git clone https://github.com/ClaraMarquardt/FEATure.git
+git clone https://github.com/ClaraMarquardt/featuristic.git
 
 # 2. Create a new branch
 git checkout -b [branch name]
@@ -47,5 +55,5 @@ git push origin [branch name]
 
 # 4. Test by installing from the branch
 library(devtools)
-install_git("git://github.com/ClaraMarquardt/FEATure.git", branch = "[branch name])
+install_git("git://github.com/ClaraMarquardt/featuristic.git", branch = "[branch name])
 ````
